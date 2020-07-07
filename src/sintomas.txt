@@ -1,0 +1,12 @@
+vomito|1
+fiebre|0
+resfrio|3
+congestion nasal|3
+tos|5
+dolor en el pecho|2
+dolor de garganta|3
+irritacion de piel|4
+dificultad respiratoria|0
+diarrea|4
+nausea|4
+cansancio|5
