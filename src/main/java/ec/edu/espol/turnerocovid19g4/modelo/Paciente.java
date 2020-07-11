@@ -15,11 +15,13 @@ public class Paciente extends Persona{
     
     private LocalDate fechaNacimiento;
     private Genero genero;
+    private String sintoma;
 
-    public Paciente(LocalDate fechaNacimiento, Genero genero, String cedula, String nombre, String apellido) {
+    public Paciente(LocalDate fechaNacimiento, Genero genero, String cedula, String nombre, String apellido, String sintoma) {
         super(cedula, nombre, apellido);
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
+        this.sintoma=sintoma;
     }
 
     public LocalDate getFechaNacimiento() {
@@ -36,6 +38,14 @@ public class Paciente extends Persona{
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    public String getSintoma() {
+        return sintoma;
+    }
+
+    public void setSintoma(String sintoma) {
+        this.sintoma = sintoma;
     }
     
     public enum Genero {
