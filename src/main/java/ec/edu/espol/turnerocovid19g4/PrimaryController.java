@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ec.edu.espol.turnerocovid19g4.modelo.Sintoma;
+import java.io.File;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -57,15 +58,32 @@ public class PrimaryController implements Initializable {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
+        mediaPlayer.pause();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //para inicializar videos
-        //mediaPlayer = new MediaPlayer(new Media(/*"file:/C:/Users/DELL/Pictures/video1.mp4"*/));
-        //mediaPlayer.setAutoPlay(true);
-        //media.setMediaPlayer(mediaPlayer);
-        //agregando sintomas
+        //Inicializar los videos en ventana principal
+        List<String> videoPaths = new ArrayList<>();
+        try(BufferedReader bf = new BufferedReader(new FileReader("src/videos.txt"))){
+            String line;
+            while((line=bf.readLine())!=null){
+                videoPaths.add(line);
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        String path = new File("src/media/videoFutbolFinal.mp4").getAbsolutePath();
+        mediaPlayer = new MediaPlayer(new Media(new File(path).toURI().toString()));
+        mediaPlayer.setAutoPlay(true);
+        media.setMediaPlayer(mediaPlayer);
+        
+        //Cargando lista con sintomas 
+        cargarSintomas();
+    }
+    
+    public void cargarSintomas(){
         sintomas = new ArrayList<>();
         try(BufferedReader bf = new BufferedReader(new FileReader("src/sintomas.txt"))){
             String line;
