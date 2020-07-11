@@ -9,9 +9,24 @@ package ec.edu.espol.turnerocovid19g4.modelo;
  *
  * @author mbpretina
  */
-class Sintoma {
+public class Sintoma {
     private String nombre;
     private int prioridad;
+    
+    public Sintoma(String nombre, int prioridad){
+        this.nombre = nombre;
+        this.prioridad = prioridad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    
     
     
 }
