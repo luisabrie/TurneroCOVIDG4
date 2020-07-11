@@ -18,7 +18,36 @@ import javafx.scene.media.MediaView;
 public class PrimaryController implements Initializable {
     
     @FXML
-    private Button FormPac;
+    private Button Paciente;
+    
+    @FXML
+    private void vistaPaciente() throws IOException{
+        App.setRoot("secondary");
+    };
+    
+    @FXML
+    private Button Doctor;
+    
+    @FXML
+    private void vistaDoctor() throws IOException{
+        App.setRoot("tertiary");
+    };
+    
+    @FXML
+    private Button Puesto;
+    
+    @FXML
+    private void vistaPuesto() throws IOException{
+        App.setRoot("quaternary");
+    };
+    
+    @FXML
+    private Button Atencion;
+    
+    @FXML
+    private void vistaAtencion() throws IOException{
+        App.setRoot("fifth");
+    };
     
     public static List<Sintoma> sintomas;
     @FXML
@@ -33,9 +62,9 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //para inicializar videos
-        mediaPlayer = new MediaPlayer(new Media("file:/C:/Users/DELL/Pictures/video1.mp4"));
-        mediaPlayer.setAutoPlay(true);
-        media.setMediaPlayer(mediaPlayer);
+        //mediaPlayer = new MediaPlayer(new Media(/*"file:/C:/Users/DELL/Pictures/video1.mp4"*/));
+        //mediaPlayer.setAutoPlay(true);
+        //media.setMediaPlayer(mediaPlayer);
         //agregando sintomas
         sintomas = new ArrayList<>();
         try(BufferedReader bf = new BufferedReader(new FileReader("src/sintomas.txt"))){

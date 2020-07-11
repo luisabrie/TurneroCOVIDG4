@@ -8,35 +8,37 @@
 <?import javafx.scene.media.MediaView?>
 
 <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="490.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.PrimaryController">
-   <children>
-      <HBox prefHeight="20.0" prefWidth="416.0">
-         <children>
-            <Button fx:id="FormPac" mnemonicParsing="false" text="Form Pac" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-      </HBox>
-      <HBox prefHeight="160.0" prefWidth="416.0">
-         <children>
-            <MediaView fx:id="media" fitHeight="200.0" fitWidth="200.0" />
-            <VBox prefHeight="200.0" prefWidth="251.0">
-               <children>
-                  <HBox prefHeight="48.0" prefWidth="251.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="131.0" text="Label" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="124.0" text="Label" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="52.0" prefWidth="251.0" />
-                  <HBox prefHeight="53.0" prefWidth="251.0" />
-                  <HBox prefHeight="43.0" prefWidth="251.0" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+  <children>
+    <HBox prefHeight="20.0" prefWidth="416.0">
+      <children>
+        <Button id="FormPac" fx:id="Paciente" mnemonicParsing="false" onAction="#vistaPaciente" text="Paciente" />
+        <Button fx:id="Doctor" mnemonicParsing="false" onAction="#vistaDoctor" text="Doctor" />
+        <Button fx:id="Puesto" mnemonicParsing="false" onAction="#vistaPuesto" text="Puesto" />
+        <Button fx:id="Atencion" mnemonicParsing="false" onAction="#vistaAtencion" text="Atencion" />
+      </children>
+    </HBox>
+    <HBox prefHeight="160.0" prefWidth="416.0">
+      <children>
+        <MediaView fx:id="media" fitHeight="200.0" fitWidth="200.0" />
+        <VBox prefHeight="200.0" prefWidth="251.0">
+          <children>
+            <HBox prefHeight="48.0" prefWidth="251.0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="131.0" text="TURNO" />
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="124.0" text="PUESTO" />
+              </children>
+            </HBox>
+            <HBox prefHeight="52.0" prefWidth="251.0" />
+            <HBox prefHeight="53.0" prefWidth="251.0" />
+            <HBox prefHeight="43.0" prefWidth="251.0" />
+          </children>
+        </VBox>
+      </children>
+    </HBox>
+    <Label text="Primary View" />
+    <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
+  </children>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
 </VBox>

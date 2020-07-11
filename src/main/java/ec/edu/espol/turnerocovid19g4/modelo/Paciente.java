@@ -38,8 +38,6 @@ public class Paciente extends Persona{
         this.genero = genero;
     }
     
-    
-    
     public enum Genero {
         HOMBRE,
         MUJER
