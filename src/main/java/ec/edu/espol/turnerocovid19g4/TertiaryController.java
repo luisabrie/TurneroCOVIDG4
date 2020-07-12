@@ -41,7 +41,6 @@ public class TertiaryController {
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && especialidad.trim().length()>0){
             Medico persona = new Medico(nombre,apellidos,cedula,especialidad);
-            //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
             registrarMedico(persona);
             App.setRoot("primary");
         }else{
