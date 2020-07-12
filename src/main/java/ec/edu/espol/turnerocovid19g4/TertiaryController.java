@@ -59,7 +59,7 @@ public class TertiaryController {
     };
     
     public void registrarMedico(Medico doctor){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/pacientes.txt", true))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/medicos.txt", true))){
             String info = doctor.getNombre()+"|"+doctor.getApellido()+"|"+doctor.getCedula()+"|"+doctor.getEspecialidad();
             bw.append(info+"\n");
     	}catch(IOException ex) {
