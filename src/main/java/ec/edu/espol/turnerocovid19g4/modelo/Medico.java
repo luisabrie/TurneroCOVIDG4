@@ -13,7 +13,7 @@ public class Medico extends Persona{
     
     private String especialidad;
 
-    public Medico(String especialidad, String cedula, String nombre, String apellido) {
+    public Medico(String nombre, String apellido, String cedula, String especialidad) {
         super(cedula, nombre, apellido);
         this.especialidad = especialidad;
     }

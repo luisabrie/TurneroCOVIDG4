@@ -1,0 +1,4 @@
+Alex|Paguay|0908702030|medicina forense
+Carla|Viteri|0908124567|pediatra
+Andrea|Chiriboga|0999576412|neurologia
+Odalys|Gushmer|0908202030|nutriologia
