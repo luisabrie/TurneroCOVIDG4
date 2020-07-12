@@ -72,8 +72,9 @@ public class SecondaryController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboGenero.getItems().add("HOMBRE");
-        comboGenero.getItems().add("MUJER");
+        //comboGenero.getItems().add("HOMBRE");
+        //comboGenero.getItems().add("MUJER");
+        comboGenero.getItems().setAll(Genero.values());
         
         comboSintoma.getItems().add("vomito");
         comboSintoma.getItems().add("fiebre");
