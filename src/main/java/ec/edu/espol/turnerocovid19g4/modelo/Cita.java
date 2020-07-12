@@ -14,10 +14,22 @@ import java.util.LinkedList;
 public class Cita {
     private Paciente paciente;
     private Medico medico;
-    private LinkedList<Sintoma> sintomas;
+    private Sintoma sintoma;
     private LinkedList<Diagnostico> diagnostico;
     private Receta receta;
     
+    public Cita(Paciente paciente, Sintoma sintoma){
+        this.paciente = paciente;
+        this.sintoma = sintoma;
+    }
+
+    public Sintoma getSintoma() {
+        return sintoma;
+    }
+    
+    public int getPrioridad(){
+        return sintoma.getPrioridad();
+    }
     
     
 }

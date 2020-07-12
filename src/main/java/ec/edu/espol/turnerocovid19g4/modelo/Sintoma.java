@@ -26,6 +26,11 @@ public class Sintoma {
         return prioridad;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     
     
     
