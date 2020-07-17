@@ -1,5 +1,6 @@
 package ec.edu.espol.turnerocovid19g4;
 
+import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
 import ec.edu.espol.turnerocovid19g4.modelo.Paciente;
 import ec.edu.espol.turnerocovid19g4.modelo.Paciente.Genero;
@@ -57,10 +58,9 @@ public class SecondaryController implements Initializable{
         Sintoma sintoma = (Sintoma)comboSintoma.getValue();
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && sintoma!=null && genero!=null && fecha!=null){
-            Paciente persona = new Paciente(fecha,genero,cedula,nombre,apellidos,sintoma);
+            Paciente persona = new Paciente(fecha,genero,cedula,nombre,apellidos);
             //Repeticion de sintoma en paciente y en cita
-            Cita cita = new Cita(persona,sintoma);
-            PrimaryController.citas.add(cita);
+            Data.getInstance().nuevaCita(new Cita(persona,sintoma));
             //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
             registrarPaciente(persona);
             App.setRoot("primary");
@@ -83,7 +83,7 @@ public class SecondaryController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         comboGenero.getItems().add(Genero.HOMBRE);
         comboGenero.getItems().add(Genero.MUJER);
-        for(Sintoma sintoma: PrimaryController.sintomas){
+        for(Sintoma sintoma: Data.getInstance().getSintomas()){
             comboSintoma.getItems().add(sintoma);
         }
     }
@@ -91,7 +91,7 @@ public class SecondaryController implements Initializable{
     public void registrarPaciente(Paciente paciente){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/pacientes.txt", true))){
             String info = paciente.getNombre()+"|"+paciente.getApellido()+"|"+paciente.getCedula();
-            bw.append(info+"\n");
+            bw.append(info+"\n"); 
     	}catch(IOException ex) {
     		System.out.println(ex.getMessage());
     	}

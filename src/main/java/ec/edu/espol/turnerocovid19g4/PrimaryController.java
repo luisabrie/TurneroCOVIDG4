@@ -1,5 +1,6 @@
 package ec.edu.espol.turnerocovid19g4;
 
+import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
@@ -23,10 +24,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
 public class PrimaryController implements Initializable {
-    public static List<Sintoma> sintomas;
-    public static List<Medico> medicos;
-    public static Queue<Puesto> puestos;
-    public static PriorityQueue<Cita> citas;
+    
     private MediaPlayer mediaPlayer;
     //FXML
     @FXML
@@ -50,66 +48,11 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Inicializar los videos en ventana principal
-        List<String> videoPaths = new ArrayList<>();
-        try(BufferedReader bf = new BufferedReader(new FileReader("src/videos.txt"))){
-            String line;
-            while((line=bf.readLine())!=null){
-                videoPaths.add(line);
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-        String path = new File("src/media/videoFutbolFinal.mp4").getAbsolutePath();
-        mediaPlayer = new MediaPlayer(new Media(new File(path).toURI().toString()));
+        mediaPlayer = new MediaPlayer(new Media(Data.getInstance().getVideo().toURI().toString()));
         mediaPlayer.setAutoPlay(true);
         media.setMediaPlayer(mediaPlayer);
         //Cargando Estructuras de Datos
-        if(sintomas == null ) cargarSintomas();
-        if(medicos == null) cargarMedicos();
-        if(puestos == null) cargarPuestos();
-        if( citas == null) citas = new PriorityQueue<>(
-                (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
     }
-    
-    public void cargarMedicos(){
-        medicos = new ArrayList<>();
-        try(BufferedReader bf = new BufferedReader(new FileReader("src/medicos.txt"))){
-            String line;
-            while((line=bf.readLine())!=null){
-                String[] datos = line.split("\\|");
-                medicos.add(new Medico(datos[0],datos[1],datos[2],datos[3]));  
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void cargarSintomas(){
-        sintomas = new ArrayList<>();
-        try(BufferedReader bf = new BufferedReader(new FileReader("src/sintomas.txt"))){
-            String line;
-            while((line=bf.readLine())!=null){
-                String[] datos = line.split("\\|");
-                Sintoma sintoma = new Sintoma(datos[0],Integer.parseInt(datos[1]));
-                sintomas.add(sintoma);  
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void cargarPuestos(){
-        puestos = new LinkedList<>();
-        try(BufferedReader bf = new BufferedReader(new FileReader("src/puestos.txt"))){
-            String line;
-            while((line=bf.readLine())!=null){
-                puestos.add(new Puesto(line));
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-    
     
     /**
      * Cambio de Ventanas
