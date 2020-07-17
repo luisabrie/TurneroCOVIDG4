@@ -9,9 +9,13 @@ import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
@@ -31,6 +35,9 @@ public class TertiaryController {
     
     @FXML
     private TextField especialidadTexto;
+    
+    @FXML
+    private Button bttGuardar;
     
     @FXML
     private void guardar() throws IOException{

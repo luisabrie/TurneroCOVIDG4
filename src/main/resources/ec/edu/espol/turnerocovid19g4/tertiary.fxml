@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
    <children>
       <Label text="Doctor" />
       <HBox prefHeight="27.0" prefWidth="291.0">
@@ -21,8 +21,8 @@
       </HBox>
       <HBox prefHeight="27.0" prefWidth="291.0">
          <children>
-            <Label fx:id="apellidoTexto" prefHeight="17.0" prefWidth="79.0" text="Apellidos" />
-            <TextField prefHeight="25.0" prefWidth="149.0" />
+            <Label prefHeight="17.0" prefWidth="79.0" text="Apellidos" />
+            <TextField fx:id="apellidosTexto" prefHeight="25.0" prefWidth="149.0" />
          </children>
       </HBox>
       <HBox prefHeight="25.0" prefWidth="291.0">
