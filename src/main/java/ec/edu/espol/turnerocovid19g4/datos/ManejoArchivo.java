@@ -65,7 +65,7 @@ public class ManejoArchivo {
         }
         return sintomas;
     }
-    public static Queue<Puesto> cargarPuestos(Queue<Puesto> puestos){
+    public static List<Puesto> cargarPuestos(List<Puesto> puestos){
         puestos = new LinkedList<>();
         
         File file = obtenerArchivoDesdeRecursos("puestos.txt");

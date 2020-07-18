@@ -25,6 +25,7 @@ public class Data {
     private static Data instancia = new Data();
     private List<Sintoma> sintomas;
     private List<Medico> medicos;
+    private List<Puesto> puest;
     private Queue<Puesto> puestos;
     private PriorityQueue<Cita> citas;
     private CircularSimplyLinkedList<File> videos;
@@ -33,7 +34,8 @@ public class Data {
     private Data(){
         medicos = ManejoArchivo.cargarMedicos(medicos);
         sintomas = ManejoArchivo.cargarSintomas(sintomas);
-        puestos =  ManejoArchivo.cargarPuestos(puestos);
+        puest =  ManejoArchivo.cargarPuestos(puest);
+        puestos=(Queue<Puesto>) puest;
         videos =  ManejoArchivo.cargarVideos(videos);
         vidIt = videos.iterator();
         citas = new PriorityQueue<>(
@@ -46,9 +48,20 @@ public class Data {
     public boolean nuevaCita(Cita cita){
         return citas.offer(cita);
     }
+    public boolean nuevoPuesto(Puesto puesto){
+        return puestos.offer(puesto);
+    }
 
     public List<Sintoma> getSintomas() {
         return sintomas;
+    }
+    
+    public List<Medico> getMedicos(){
+        return medicos;
+    }
+    
+    public List<Puesto> getPuest(){
+        return puest;
     }
     // TODO : Crear iterador, desplazarlo cada nuevo video
     public File getVideo() {

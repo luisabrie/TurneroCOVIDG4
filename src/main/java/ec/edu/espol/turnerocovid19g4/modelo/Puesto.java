@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.turnerocovid19g4.modelo;
 
+import ec.edu.espol.turnerocovid19g4.modelo.Medico;
+
 /**
  *
  * @author Alejandro
@@ -24,6 +26,14 @@ public class Puesto {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Medico getMedicoEncargado() {
+        return medicoEncargado;
+    }
+
+    public String getCodPuesto() {
+        return codPuesto;
     }
 
     @Override

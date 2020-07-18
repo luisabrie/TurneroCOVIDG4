@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="312.0" prefWidth="497.0" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.EliminarPuestoController">
+   <children>
+      <Label text="ELIMINAR PUESTO">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox alignment="TOP_CENTER" prefHeight="27.0" prefWidth="600.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="70.0" text="Puesto" />
+            <ComboBox fx:id="comboPuesto" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="520.0" spacing="40.0">
+         <children>
+            <Button fx:id="bttEliminarPuesto" mnemonicParsing="false" onAction="#eliminarPuesto" text=" Eliminar Puesto" />
+            <Button fx:id="bttEliminarMedico" mnemonicParsing="false" onAction="#eliminarMedico" text="Eliminar Medico" />
+            <Button fx:id="bttCerrar" mnemonicParsing="false" onAction="#cerrar" text="Cerrar" />
+         </children>
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+</VBox>

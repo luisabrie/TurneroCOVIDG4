@@ -26,6 +26,11 @@ public class Medico extends Persona{
         this.especialidad = especialidad;
     }
     
+    @Override
+    public String toString() {
+        return getNombre();
+    }
+    
     
     
 }
