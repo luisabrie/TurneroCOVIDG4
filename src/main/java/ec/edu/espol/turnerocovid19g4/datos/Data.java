@@ -33,7 +33,8 @@ public class Data {
         sintomas = ManejoArchivo.cargarSintomas(sintomas);
         puestos =  ManejoArchivo.cargarPuestos(puestos);
         videos =  ManejoArchivo.cargarVideos(videos);
-        System.out.println(videos);
+        citas = new PriorityQueue<>(
+                (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
     }
     
     public static Data getInstance(){
