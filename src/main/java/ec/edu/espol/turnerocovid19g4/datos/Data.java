@@ -11,7 +11,6 @@ import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import ec.edu.espol.turnerocovid19g4.modelo.Sintoma;
 import ec.edu.espol.turnerocovid19g4.util.CircularSimplyLinkedList;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;

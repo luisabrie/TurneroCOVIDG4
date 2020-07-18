@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.turnerocovid19g4.modelo;
 
+import ec.edu.espol.turnerocovid19g4.datos.Data;
 import java.util.LinkedList;
 
 /**
@@ -22,14 +23,11 @@ public class Cita {
         this.paciente = paciente;
         this.sintoma = sintoma;
     }
-
+    
     public Sintoma getSintoma() {
         return sintoma;
     }
-    
     public int getPrioridad(){
         return sintoma.getPrioridad();
     }
-    
-    
 }

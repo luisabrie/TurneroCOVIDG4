@@ -16,7 +16,7 @@ public class Paciente extends Persona{
     private LocalDate fechaNacimiento;
     private Genero genero;
 
-    public Paciente(LocalDate fechaNacimiento, Genero genero, String cedula, String nombre, String apellido) {
+    public Paciente(String cedula, String nombre, String apellido, LocalDate fechaNacimiento, Genero genero) {
         super(cedula, nombre, apellido);
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;

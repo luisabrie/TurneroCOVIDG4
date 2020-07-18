@@ -6,24 +6,26 @@
 package ec.edu.espol.turnerocovid19g4.datos;
 
 import ec.edu.espol.turnerocovid19g4.App;
+import ec.edu.espol.turnerocovid19g4.modelo.Cita;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
+import ec.edu.espol.turnerocovid19g4.modelo.Paciente;
+import ec.edu.espol.turnerocovid19g4.modelo.Paciente.Genero;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import ec.edu.espol.turnerocovid19g4.modelo.Sintoma;
 import ec.edu.espol.turnerocovid19g4.util.CircularSimplyLinkedList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -103,6 +105,31 @@ public class ManejoArchivo {
             }
         return videos;
         }
+    public static PriorityQueue<Cita> cargarCitasRezagadas(PriorityQueue<Cita> citas){
+        citas = new PriorityQueue<>(
+                (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
+        File file = obtenerArchivoDesdeRecursos("pacientes.txt");
+        if (file == null) {
+            System.out.println("No se ha encontrado pacientes.");
+            System.out.println("Creando cola en cero.");
+        } else {
+            try (FileReader reader = new FileReader(file);
+                 BufferedReader br = new BufferedReader(reader)) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] datos = line.split("\\|");
+                    if (datos.length==6){
+                        Paciente paciente = new Paciente(datos[0],datos[1],datos[2],LocalDate.parse(datos[3]),Genero.valueOf(datos[4]));
+                        Cita cita = new Cita(paciente,new Sintoma(datos[5])); // TODO : En citas poner el buscador de prioridad.
+                        citas.offer(cita);
+                    }
+                }
+            }catch(IOException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return citas;
+    }
     private static File obtenerArchivoDesdeRecursos(String archivo) {
         
         
@@ -115,6 +142,13 @@ public class ManejoArchivo {
         }
 
     }
-    //¿Debe haber un metodo de carga de paciente con citas?citas = new PriorityQueue<>(
-    //            (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
+    public static void registrarPaciente(Paciente paciente){
+        
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/pacientes.txt", true))){
+            String info = paciente.getNombre()+"|"+paciente.getApellido()+"|"+paciente.getCedula();
+            bw.append(info+"\n"); 
+    	}catch(IOException ex) {
+    		System.out.println(ex.getMessage());
+    	}
+    }
 }

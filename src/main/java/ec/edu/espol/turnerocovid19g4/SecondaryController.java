@@ -1,6 +1,7 @@
 package ec.edu.espol.turnerocovid19g4;
 
 import ec.edu.espol.turnerocovid19g4.datos.Data;
+import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
 import ec.edu.espol.turnerocovid19g4.modelo.Paciente;
 import ec.edu.espol.turnerocovid19g4.modelo.Paciente.Genero;
@@ -58,11 +59,11 @@ public class SecondaryController implements Initializable{
         Sintoma sintoma = (Sintoma)comboSintoma.getValue();
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && sintoma!=null && genero!=null && fecha!=null){
-            Paciente persona = new Paciente(fecha,genero,cedula,nombre,apellidos);
+            Paciente persona = new Paciente(cedula,nombre,apellidos,fecha,genero);
             //Repeticion de sintoma en paciente y en cita
             Data.getInstance().nuevaCita(new Cita(persona,sintoma));
             //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
-            registrarPaciente(persona);
+            ManejoArchivo.registrarPaciente(persona);
             App.setRoot("primary");
         }else{
             //Muestra alerta
@@ -88,14 +89,7 @@ public class SecondaryController implements Initializable{
         }
     }
     
-    public void registrarPaciente(Paciente paciente){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/pacientes.txt", true))){
-            String info = paciente.getNombre()+"|"+paciente.getApellido()+"|"+paciente.getCedula();
-            bw.append(info+"\n"); 
-    	}catch(IOException ex) {
-    		System.out.println(ex.getMessage());
-    	}
-    }
+    
 
     
 }
