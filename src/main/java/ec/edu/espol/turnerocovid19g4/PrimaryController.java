@@ -16,22 +16,7 @@ public class PrimaryController implements Initializable {
     private MediaPlayer mediaPlayer;
     //FXML
     @FXML
-    private Button Paciente;
-    @FXML
-    private Button Doctor;
-    @FXML
-    private Button Puesto;
-    @FXML
-    private Button Atencion;
-    @FXML
     private MediaView media;
-    
-    
-    @FXML
-    private void switchToSecondary() throws IOException {
-        mediaPlayer.stop();
-        App.setRoot("secondary");
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,29 +27,4 @@ public class PrimaryController implements Initializable {
         //Cargando Estructuras de Datos
     }
     
-    /**
-     * Cambio de Ventanas
-     */    
-    
-    //Formulario para crear Pacientes
-    @FXML
-    private void vistaPaciente() throws IOException{
-        mediaPlayer.stop();
-        App.setRoot("secondary");
-    };
-    //Formulario para crear Doctores
-    @FXML
-    private void vistaDoctor() throws IOException{
-        App.setRoot("tertiary");
-    };
-    //Formulario para crear Puestos
-    @FXML
-    private void vistaPuesto() throws IOException{
-        App.setRoot("quaternary");
-    };
-    //Vista para simular atencion a Pacientes
-    @FXML
-    private void vistaAtencion() throws IOException{
-        App.setRoot("fifth");
-    };
 }

@@ -23,10 +23,6 @@ import javafx.scene.control.TextField;
 
 public class SecondaryController implements Initializable{
 
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
     
     @FXML
     private TextField nombreTexto;
