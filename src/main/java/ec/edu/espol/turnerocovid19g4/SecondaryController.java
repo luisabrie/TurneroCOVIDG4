@@ -56,7 +56,6 @@ public class SecondaryController implements Initializable{
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && sintoma!=null && genero!=null && fecha!=null){
             Paciente persona = new Paciente(cedula,nombre,apellidos,fecha,genero);
-            //Repeticion de sintoma en paciente y en cita
             Data.getInstance().nuevaCita(new Cita(persona,sintoma));
             //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
             ManejoArchivo.registrarPaciente(persona);

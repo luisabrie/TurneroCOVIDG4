@@ -60,7 +60,7 @@ public class Data {
         return medicos;
     }
     
-    public List<Puesto> getPuest(){
+    public List<Puesto> getPuesto(){
         return puest;
     }
     // TODO : Crear iterador, desplazarlo cada nuevo video
