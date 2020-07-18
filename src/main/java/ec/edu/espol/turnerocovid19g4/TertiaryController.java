@@ -49,7 +49,7 @@ public class TertiaryController {
                 && especialidad.trim().length()>0){
             Medico persona = new Medico(nombre,apellidos,cedula,especialidad);
             registrarMedico(persona);
-            App.setRoot("primary");
+            App.setRoot("primarySecond");
         }else{
             //Muestra alerta
             Alert alert = new Alert(AlertType.ERROR);
@@ -62,7 +62,7 @@ public class TertiaryController {
     
     @FXML
     private void cerrar() throws IOException{
-        App.setRoot("primary");
+        App.setRoot("primarySecond");
     };
     
     public void registrarMedico(Medico doctor){
