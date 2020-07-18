@@ -11,6 +11,7 @@ import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import ec.edu.espol.turnerocovid19g4.modelo.Sintoma;
 import ec.edu.espol.turnerocovid19g4.util.CircularSimplyLinkedList;
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -27,12 +28,14 @@ public class Data {
     private Queue<Puesto> puestos;
     private PriorityQueue<Cita> citas;
     private CircularSimplyLinkedList<File> videos;
+    private Iterator<File> vidIt;
     
     private Data(){
         medicos = ManejoArchivo.cargarMedicos(medicos);
         sintomas = ManejoArchivo.cargarSintomas(sintomas);
         puestos =  ManejoArchivo.cargarPuestos(puestos);
         videos =  ManejoArchivo.cargarVideos(videos);
+        vidIt = videos.iterator();
         citas = new PriorityQueue<>(
                 (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
     }
@@ -49,7 +52,7 @@ public class Data {
     }
     // TODO : Crear iterador, desplazarlo cada nuevo video
     public File getVideo() {
-        return videos.get(1);
+        return vidIt.next();
     }
 
 

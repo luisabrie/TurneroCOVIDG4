@@ -20,11 +20,17 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Inicializar los videos en ventana principal
-        mediaPlayer = new MediaPlayer(new Media(Data.getInstance().getVideo().toURI().toString()));
-        mediaPlayer.setAutoPlay(true);
-        media.setMediaPlayer(mediaPlayer);
-        //Cargando Estructuras de Datos
+        //Inicializa los videos
+        initVideos();
     }
     
+    private void initVideos(){
+        mediaPlayer = new MediaPlayer(new Media(Data.getInstance().getVideo().toURI().toString()));
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setOnEndOfMedia(() -> {
+            initVideos();
+        });
+        media.setMediaPlayer(mediaPlayer);
+    }
+
 }
