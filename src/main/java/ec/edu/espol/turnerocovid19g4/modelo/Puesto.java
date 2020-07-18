@@ -11,8 +11,8 @@ package ec.edu.espol.turnerocovid19g4.modelo;
  */
 public class Puesto {
     private Medico medicoEncargado;
-    private Paciente paciente;
-    private String codPuesto;
+    private Cita cita;
+    private final String codPuesto;
     
     public Puesto(String codPuesto){
         this.codPuesto = codPuesto;
@@ -22,8 +22,8 @@ public class Puesto {
         this.medicoEncargado = medicoEncargado;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setCita (Cita cita) {
+        this.cita = cita;
     }
 
     @Override

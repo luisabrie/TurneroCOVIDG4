@@ -1,12 +1,10 @@
 package ec.edu.espol.turnerocovid19g4;
 
 import ec.edu.espol.turnerocovid19g4.datos.Data;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -21,6 +19,7 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Inicializa los videos
+        
         initVideos();
     }
     
@@ -28,6 +27,7 @@ public class PrimaryController implements Initializable {
         mediaPlayer = new MediaPlayer(new Media(Data.getInstance().getVideo().toURI().toString()));
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.dispose();
             initVideos();
         });
         media.setMediaPlayer(mediaPlayer);
