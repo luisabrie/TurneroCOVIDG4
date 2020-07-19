@@ -65,7 +65,7 @@ public class ManejoArchivo {
         }
         return sintomas;
     }
-    public static List<Puesto> cargarPuestos(List<Puesto> puestos){
+    public static List<Puesto> cargarPuestos(List<Puesto> puestos,Queue<Puesto> colaPuesto){
         puestos = new LinkedList<>();
         
         File file = obtenerArchivoDesdeRecursos("puestos.txt");
@@ -78,8 +78,12 @@ public class ManejoArchivo {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);//Borrar
                 String[] info = line.split("\\|");
-                //if(info.length == 2) 
-                puestos.add(new Puesto(line)); // ¿Se tiene que agregar el puesto inmediatamente? ¿Hay puestos prestablecidos con doctor?
+                if(info.length == 2){
+                    Medico medico=Data.getInstance().recorrerMedicos(info[1]);
+                    Puesto p=new Puesto(info[0],medico);
+                    puestos.add(p);
+                    colaPuesto.offer(p);
+                }else puestos.add(new Puesto(info[0])); // ¿Se tiene que agregar el puesto inmediatamente? ¿Hay puestos prestablecidos con doctor?
             }
         }catch(IOException ex){
             System.out.println(ex.getMessage());
