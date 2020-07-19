@@ -131,6 +131,18 @@ public class ManejoArchivo {
     	}
     }
     
+    public static void registrarMedico(Medico doctor){
+        File file = obtenerArchivoDesdeRecursos("medicos.txt");
+        try(FileWriter fw = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(fw)){
+            String info = doctor.getNombre()+"|"+doctor.getApellido()+"|"+doctor.getCedula()+"|"+doctor.getEspecialidad();
+            bw.append(info+"\n");
+    	}catch(IOException ex) {
+    		System.out.println(ex.getMessage());
+    	}
+    }
+    
+    
     public static void registrarPuesto(Puesto puesto){
         File file = obtenerArchivoDesdeRecursos("puestos.txt");
         try(FileWriter fw = new FileWriter(file,true);

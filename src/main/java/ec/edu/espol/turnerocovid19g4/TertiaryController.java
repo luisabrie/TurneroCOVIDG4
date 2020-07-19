@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import ec.edu.espol.turnerocovid19g4.datos.Data;
+import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -48,7 +50,8 @@ public class TertiaryController {
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && especialidad.trim().length()>0){
             Medico persona = new Medico(nombre,apellidos,cedula,especialidad);
-            registrarMedico(persona);
+            Data.getInstance().getMedicos().add(persona);
+            ManejoArchivo.registrarMedico(persona);
             App.setRoot("primarySecond");
         }else{
             //Muestra alerta
@@ -65,13 +68,5 @@ public class TertiaryController {
         App.setRoot("primarySecond");
     };
     
-    public void registrarMedico(Medico doctor){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/medicos.txt", true))){
-            String info = doctor.getNombre()+"|"+doctor.getApellido()+"|"+doctor.getCedula()+"|"+doctor.getEspecialidad();
-            bw.append(info+"\n");
-    	}catch(IOException ex) {
-    		System.out.println(ex.getMessage());
-    	}
-    }
     
 }
