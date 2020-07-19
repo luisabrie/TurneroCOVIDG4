@@ -1,5 +1,7 @@
 package ec.edu.espol.turnerocovid19g4;
 
+import ec.edu.espol.turnerocovid19g4.datos.Data;
+import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +24,12 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         escenario(scene1);
+    }
+    
+    @Override
+    public void stop(){
+        ManejoArchivo.savePuestos();
+        ManejoArchivo.saveMedicos();
     }
 
     static void setRoot(String fxml) throws IOException {

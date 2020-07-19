@@ -19,6 +19,11 @@ public class Puesto {
     public Puesto(String codPuesto){
         this.codPuesto = codPuesto;
     }
+    
+    public Puesto(String codPuesto, Medico medico){
+        this.codPuesto = codPuesto;
+        medicoEncargado = medico;
+    }
 
     public void setMedicoEncargado(Medico medicoEncargado) {
         this.medicoEncargado = medicoEncargado;

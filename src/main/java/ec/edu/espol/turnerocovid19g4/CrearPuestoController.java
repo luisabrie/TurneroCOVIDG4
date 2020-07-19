@@ -56,8 +56,9 @@ public class CrearPuestoController implements Initializable {
         Medico medico=(Medico)comboMedico.getValue();
         if (numero.trim().length()>0){
             Puesto puesto=new Puesto(numero);
+            Data.getInstance().getPuestos().add(puesto);
             if(medico!=null) puesto.setMedicoEncargado(medico);
-            registrarPuesto(puesto);
+            ManejoArchivo.registrarPuesto(puesto);
             App.setRoot("quaternary");
         }else{
             //Muestra alerta
@@ -75,14 +76,5 @@ public class CrearPuestoController implements Initializable {
         App.setRoot("quaternary");
     };
     
-    public void registrarPuesto(Puesto puesto){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/puestos.txt", true))){
-            String info = puesto.getCodPuesto();
-            if(puesto.getMedicoEncargado()!=null) info=info+"|"+puesto.getMedicoEncargado();
-            bw.append(info+"\n");
-    	}catch(IOException ex) {
-    		System.out.println(ex.getMessage());
-    	}
-    }
 
 }

@@ -76,6 +76,9 @@ public class ManejoArchivo {
 
             String line;
             while ((line = br.readLine()) != null) {
+                System.out.println(line);//Borrar
+                String[] info = line.split("\\|");
+                //if(info.length == 2) 
                 puestos.add(new Puesto(line)); // ¿Se tiene que agregar el puesto inmediatamente? ¿Hay puestos prestablecidos con doctor?
             }
         }catch(IOException ex){
@@ -96,10 +99,10 @@ public class ManejoArchivo {
             for (File f : files) {
                 System.out.println(f);
                 videos.addLast(f);
-                }
             }
-        return videos;
         }
+        return videos;
+    }
     // Se elimino cargarCitasRezagadas porque en el archivo solo se tiene que guardar la informacion del paciente
     private static File obtenerArchivoDesdeRecursos(String archivo) {
         
@@ -123,4 +126,44 @@ public class ManejoArchivo {
     		System.out.println(ex.getMessage());
     	}
     }
+    
+    public static void registrarPuesto(Puesto puesto){
+        File file = obtenerArchivoDesdeRecursos("puestos.txt");
+        try(FileWriter fw = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(fw)){
+            
+            String info = puesto.getCodPuesto();
+            if(puesto.getMedicoEncargado()!=null) info=info+"|"+puesto.getMedicoEncargado();
+            bw.append(info+"\n");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+    //Metodos para finalizar el sistema
+    public static void savePuestos(){
+        File file = obtenerArchivoDesdeRecursos("puestos.txt");
+        try(FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw)){
+            
+            for(Puesto p: Data.getInstance().getPuestos())
+                bw.append(p.getCodPuesto()+"\n");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void saveMedicos(){
+        File file = obtenerArchivoDesdeRecursos("medicos.txt");
+        try(FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw)){
+            
+            for(Medico m: Data.getInstance().getMedicos())
+                bw.append(m.getNombre()+"|"+m.getApellido()+"|"+m.getCedula()+"|"+m.getEspecialidad()+"\n");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 }
