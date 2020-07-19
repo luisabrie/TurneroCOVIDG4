@@ -6,6 +6,7 @@
 package ec.edu.espol.turnerocovid19g4.modelo;
 
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
+import java.util.Objects;
 
 /**
  *
@@ -41,6 +42,36 @@ public class Puesto {
         return codPuesto;
     }
 
+    public Cita getCita() {
+        return cita;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Puesto other = (Puesto) obj;
+        if (!Objects.equals(this.codPuesto, other.codPuesto)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
     @Override
     public String toString() {
         return codPuesto;

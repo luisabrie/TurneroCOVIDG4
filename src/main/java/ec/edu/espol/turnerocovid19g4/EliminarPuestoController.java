@@ -41,6 +41,7 @@ public class EliminarPuestoController implements Initializable {
         Puesto puesto=(Puesto) comboPuesto.getValue();
         if(puesto!=null && puesto.getMedicoEncargado()==null){
             Data.getInstance().getPuestos().remove(puesto);
+            Data.getInstance().getPuestosAtendiendo().remove(puesto); //remove en cola?
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -54,7 +55,7 @@ public class EliminarPuestoController implements Initializable {
     @FXML
     private void eliminarMedico(){
         Puesto puesto=(Puesto) comboPuesto.getValue();
-        if(puesto!=null && puesto.getMedicoEncargado()!=null){
+        if(puesto!=null && puesto.getMedicoEncargado()!=null && puesto.getCita()==null){
             puesto.setMedicoEncargado(null);
         }else{
             //Muestra alerta
