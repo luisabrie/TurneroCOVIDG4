@@ -90,5 +90,9 @@ public class Data {
         return vidIt.next();
     }
 
+    public PriorityQueue<Cita> getCitas() {
+        return citas;
+    }
 
+    
 }

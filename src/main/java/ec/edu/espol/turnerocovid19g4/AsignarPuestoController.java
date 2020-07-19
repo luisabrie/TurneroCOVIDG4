@@ -56,6 +56,7 @@ public class AsignarPuestoController implements Initializable {
         if(puesto!=null && medico!=null){
             medico.setOcupado(true);
             puesto.setMedicoEncargado(medico);
+            Data.getInstance().getPuestosAtendiendo().offer(puesto);
             App.setRoot("quaternary");
         }else{
             //Muestra alerta
