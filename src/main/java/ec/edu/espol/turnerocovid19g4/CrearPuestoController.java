@@ -56,9 +56,12 @@ public class CrearPuestoController implements Initializable {
         Medico medico=(Medico)comboMedico.getValue();
         if (numero.trim().length()>0){
             Puesto puesto=new Puesto(numero);
-            Data.getInstance().getPuestos().add(puesto);
-            if(medico!=null) puesto.setMedicoEncargado(medico);
+            if(medico!=null){ 
+                puesto.setMedicoEncargado(medico);
+                Data.getInstance().getPuestosAtendiendo().offer(puesto);
+            }
             ManejoArchivo.registrarPuesto(puesto);
+            Data.getInstance().getPuestos().add(puesto);
             App.setRoot("quaternary");
         }else{
             //Muestra alerta

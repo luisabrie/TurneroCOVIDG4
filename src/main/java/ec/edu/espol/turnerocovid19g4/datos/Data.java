@@ -74,6 +74,10 @@ public class Data {
         return null;
     }
     
+    public Queue<Puesto> getPuestosAtendiendo(){
+        return puestosAtendiendo;
+    }
+    
     // TODO : Crear iterador, desplazarlo cada nuevo video
     public File getVideo() {
         return vidIt.next();
