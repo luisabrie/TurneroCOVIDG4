@@ -9,10 +9,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
    <children>
-      <Label text="Doctor" />
+      <Label text="INGRESO DOCTOR">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
       <HBox prefHeight="27.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="80.0" text="Nombre" />

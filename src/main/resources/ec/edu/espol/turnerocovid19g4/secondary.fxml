@@ -11,10 +11,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="488.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.SecondaryController">
   <children>
-    <Label alignment="CENTER" prefHeight="17.0" prefWidth="127.0" text="INGRESO PACIENTE" textAlignment="CENTER" />
+    <Label alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="INGRESO PACIENTE" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
     <HBox prefHeight="21.0" prefWidth="289.0">
       <children>
         <Label prefWidth="84.0" text="Nombres" />
