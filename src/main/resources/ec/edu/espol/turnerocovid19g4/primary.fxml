@@ -26,26 +26,26 @@
                            </font></Label>
               </children>
             </HBox>
-            <HBox prefHeight="53.0" prefWidth="251.0">
+            <HBox fx:id="firstTurno" prefHeight="53.0" prefWidth="251.0">
                      <children>
-                        <Label fx:id="firstTurno" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
-                        <Label fx:id="firstPuesto" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
                      </children></HBox>
-            <HBox prefHeight="60.0" prefWidth="251.0">
+            <HBox fx:id="secondTurno" prefHeight="60.0" prefWidth="251.0">
                      <children>
-                        <Label fx:id="secondTurno" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
-                        <Label fx:id="secondPuesto" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
                      </children></HBox>
-                  <HBox prefHeight="60.0" prefWidth="251.0">
+                  <HBox fx:id="thirdTurno" prefHeight="60.0" prefWidth="251.0">
                      <children>
-                        <Label fx:id="thirdTurno" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
-                        <Label fx:id="thirdPuesto" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
                      </children>
                   </HBox>
-            <HBox prefHeight="60.0" prefWidth="251.0">
+            <HBox fx:id="fourthTurno" prefHeight="60.0" prefWidth="251.0">
                      <children>
-                        <Label fx:id="fourthTurno" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
-                        <Label fx:id="fourthPuesto" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="p" />
                      </children></HBox>
           </children>
         </VBox>

@@ -2,11 +2,16 @@ package ec.edu.espol.turnerocovid19g4;
 
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
+import ec.edu.espol.turnerocovid19g4.util.CircularSimplyLinkedList;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -14,31 +19,29 @@ import javafx.scene.media.MediaView;
 public class PrimaryController implements Initializable {
     
     private MediaPlayer mediaPlayer;
+    private Queue<HBox> colaTurno;
     //FXML
     @FXML
     private MediaView media;
     //Labels de turnos y puestos
     @FXML
-    private Label firstTurno;
+    private HBox firstTurno;
     @FXML
-    private Label secondTurno;
+    private HBox secondTurno;
     @FXML
-    private Label thirdTurno;
+    private HBox thirdTurno;
     @FXML
-    private Label fourthTurno;
-    @FXML
-    private Label firstPuesto;
-    @FXML
-    private Label secondPuesto;
-    @FXML
-    private Label thirdPuesto;
-    @FXML
-    private Label fourthPuesto;
+    private HBox fourthTurno;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Inicializa los videos
         initVideos();
+        colaTurno = new LinkedList<>();
+        colaTurno.offer(firstTurno);
+        colaTurno.offer(secondTurno);
+        colaTurno.offer(thirdTurno);
+        colaTurno.offer(fourthTurno);
     }
     
     private void initVideos(){
@@ -50,5 +53,5 @@ public class PrimaryController implements Initializable {
         });
         media.setMediaPlayer(mediaPlayer);
     }
-
+     
 }
