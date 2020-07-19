@@ -120,10 +120,11 @@ public class ManejoArchivo {
         }
 
     }
-    // TODO : Mejorar esto
+
     public static void registrarPaciente(Paciente paciente){
-        
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/pacientes.txt", true))){
+        File file = obtenerArchivoDesdeRecursos("pacientes.txt");
+        try(FileWriter fw = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(fw)){
             String info = paciente.getNombre()+"|"+paciente.getApellido()+"|"+paciente.getCedula();
             bw.append(info+"\n"); 
     	}catch(IOException ex) {
