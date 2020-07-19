@@ -43,7 +43,9 @@ public class Data {
                 (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
         for(Puesto puesto: puestos){
             if(puesto.getNombre()!=null){
-                puesto.setMedicoEncargado(recorrerMedicos(puesto.getNombre()));
+                Medico m=recorrerMedicos(puesto.getNombre());
+                m.setOcupado(true);
+                puesto.setMedicoEncargado(m);
             }
         }
     }

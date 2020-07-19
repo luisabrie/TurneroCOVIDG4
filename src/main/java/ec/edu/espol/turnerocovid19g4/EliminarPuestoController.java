@@ -37,11 +37,12 @@ public class EliminarPuestoController implements Initializable {
     }    
     
     @FXML
-    private void eliminarPuesto(){
+    private void eliminarPuesto() throws IOException{
         Puesto puesto=(Puesto) comboPuesto.getValue();
         if(puesto!=null && puesto.getMedicoEncargado()==null){
             Data.getInstance().getPuestos().remove(puesto);
             Data.getInstance().getPuestosAtendiendo().remove(puesto); //remove en cola?
+            App.setRoot("quaternary");
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -56,7 +57,13 @@ public class EliminarPuestoController implements Initializable {
     private void eliminarMedico(){
         Puesto puesto=(Puesto) comboPuesto.getValue();
         if(puesto!=null && puesto.getMedicoEncargado()!=null && puesto.getCita()==null){
+            puesto.getMedicoEncargado().setOcupado(false);
             puesto.setMedicoEncargado(null);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Eliminacion Medico");
+            alert.setContentText("Eliminacion de Medico exitoso");
+            alert.showAndWait();
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -45,7 +45,7 @@ public class AsignarPuestoController implements Initializable {
             }
         }
         for(Medico medico:Data.getInstance().getMedicos()){
-            comboMedico.getItems().add(medico);
+            if(!medico.isOcupado()) comboMedico.getItems().add(medico);
         }
     }    
     
@@ -54,6 +54,7 @@ public class AsignarPuestoController implements Initializable {
         Puesto puesto=(Puesto)comboPuesto.getValue();
         Medico medico=(Medico)comboMedico.getValue();
         if(puesto!=null && medico!=null){
+            medico.setOcupado(true);
             puesto.setMedicoEncargado(medico);
             App.setRoot("quaternary");
         }else{

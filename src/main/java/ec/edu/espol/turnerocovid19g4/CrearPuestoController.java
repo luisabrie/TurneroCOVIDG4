@@ -46,7 +46,7 @@ public class CrearPuestoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for(Medico medico:Data.getInstance().getMedicos()){
-            comboMedico.getItems().add(medico);
+            if(!medico.isOcupado()) comboMedico.getItems().add(medico);
         }
     }    
     
@@ -57,6 +57,7 @@ public class CrearPuestoController implements Initializable {
         if (numero.trim().length()>0){
             Puesto puesto=new Puesto(numero);
             if(medico!=null){ 
+                medico.setOcupado(true);
                 puesto.setMedicoEncargado(medico);
                 Data.getInstance().getPuestosAtendiendo().offer(puesto);
             }

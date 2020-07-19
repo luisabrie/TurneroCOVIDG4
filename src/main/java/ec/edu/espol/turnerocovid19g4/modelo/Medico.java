@@ -12,6 +12,7 @@ package ec.edu.espol.turnerocovid19g4.modelo;
 public class Medico extends Persona{
     
     private String especialidad;
+    private boolean ocupado=false;
 
     public Medico(String nombre, String apellido, String cedula, String especialidad) {
         super(cedula, nombre, apellido);
@@ -20,6 +21,14 @@ public class Medico extends Persona{
 
     public String getEspecialidad() {
         return especialidad;
+    }
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+    
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
     }
 
     public void setEspecialidad(String especialidad) {
