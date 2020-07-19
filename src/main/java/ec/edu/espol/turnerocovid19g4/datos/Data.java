@@ -36,11 +36,16 @@ public class Data {
         medicos = ManejoArchivo.cargarMedicos(medicos);
         sintomas = ManejoArchivo.cargarSintomas(sintomas);
         puestosAtendiendo=new LinkedList<>(); //Inicializar vacia o solo puestos con medicos?
-        puestos =  ManejoArchivo.cargarPuestos(puestos,puestosAtendiendo); 
+        puestos =  ManejoArchivo.cargarPuestos(puestos,puestosAtendiendo);        
         videos =  ManejoArchivo.cargarVideos(videos);
         vidIt = videos.iterator();
         citas = new PriorityQueue<>(
                 (Cita c1, Cita c2)-> c1.getPrioridad() - c2.getPrioridad());
+        for(Puesto puesto: puestos){
+            if(puesto.getNombre()!=null){
+                puesto.setMedicoEncargado(recorrerMedicos(puesto.getNombre()));
+            }
+        }
     }
     
     public static Data getInstance(){

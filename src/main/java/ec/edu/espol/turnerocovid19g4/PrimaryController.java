@@ -1,6 +1,7 @@
 package ec.edu.espol.turnerocovid19g4;
 
 import ec.edu.espol.turnerocovid19g4.datos.Data;
+import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

@@ -16,14 +16,15 @@ public class Puesto {
     private Medico medicoEncargado;
     private Cita cita;
     private final String codPuesto;
+    private String nombre;
     
     public Puesto(String codPuesto){
         this.codPuesto = codPuesto;
     }
     
-    public Puesto(String codPuesto, Medico medico){
+    public Puesto(String codPuesto, String nombre){
         this.codPuesto = codPuesto;
-        medicoEncargado = medico;
+        this.nombre = nombre;
     }
 
     public void setMedicoEncargado(Medico medicoEncargado) {
@@ -46,6 +47,10 @@ public class Puesto {
         return cita;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;

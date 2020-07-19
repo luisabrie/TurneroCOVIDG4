@@ -79,8 +79,9 @@ public class ManejoArchivo {
                 System.out.println(line);//Borrar
                 String[] info = line.split("\\|");
                 if(info.length == 2){
-                    Medico medico=Data.getInstance().recorrerMedicos(info[1]);
-                    Puesto p=new Puesto(info[0],medico);
+                    //Problema de que null aun es instance
+                    //Medico medico = Data.getInstance().recorrerMedicos(info[1]);
+                    Puesto p=new Puesto(info[0],info[1]);
                     puestos.add(p);
                     colaPuesto.offer(p);
                 }else puestos.add(new Puesto(info[0])); // ¿Se tiene que agregar el puesto inmediatamente? ¿Hay puestos prestablecidos con doctor?
@@ -164,8 +165,11 @@ public class ManejoArchivo {
         try(FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw)){
             
-            for(Puesto p: Data.getInstance().getPuestos())
-                bw.append(p.getCodPuesto()+"\n");
+            for(Puesto p: Data.getInstance().getPuestos()){
+                String info = p.getCodPuesto();
+                if(p.getMedicoEncargado()!=null) info=info+"|"+p.getMedicoEncargado();
+                bw.append(info+"\n");
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
