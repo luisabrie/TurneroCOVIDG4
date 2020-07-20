@@ -1,5 +1,9 @@
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
@@ -25,25 +29,25 @@ public class SecondaryController implements Initializable{
 
     
     @FXML
-    private TextField nombreTexto;
+    private JFXTextField nombreTexto;
     
     @FXML
-    private TextField apellidosTexto;
+    private JFXTextField apellidosTexto;
     
     @FXML
-    private TextField cedulaTexto;
+    private JFXTextField cedulaTexto;
     
     @FXML
-    private DatePicker fechaNac ;
+    private DatePicker fechaNac;
     
     @FXML
-    private ComboBox comboGenero ;
+    private JFXComboBox comboGenero;
     
     @FXML
-    private ComboBox comboSintoma;
+    private JFXComboBox comboSintoma;
     
     @FXML
-    private Button bttGuardar;
+    private JFXButton bttGuardar;
     
     @FXML
     private void guardar() throws IOException{

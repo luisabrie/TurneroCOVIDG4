@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
@@ -27,19 +29,19 @@ import javafx.scene.control.TextField;
 public class TertiaryController {
     
     @FXML
-    private TextField nombreTexto;
+    private JFXTextField nombreTexto;
     
     @FXML
-    private TextField apellidosTexto;
+    private JFXTextField apellidosTexto;
     
     @FXML
-    private TextField cedulaTexto;
+    private JFXTextField cedulaTexto;
     
     @FXML
-    private TextField especialidadTexto;
+    private JFXTextField especialidadTexto;
     
     @FXML
-    private Button bttGuardar;
+    private JFXButton bttGuardar;
     
     @FXML
     private void guardar() throws IOException{
