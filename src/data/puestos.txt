@@ -1,3 +1,4 @@
-01|Carlos
-02|Nicole
-10|Jose
+F|Carlos
+G|G
+E|E
+GE|Jose

@@ -1,32 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ec.edu.espol.turnerocovid19g4;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
-import ec.edu.espol.turnerocovid19g4.modelo.Cita;
-import ec.edu.espol.turnerocovid19g4.modelo.Paciente;
-import ec.edu.espol.turnerocovid19g4.modelo.Paciente.Genero;
-import ec.edu.espol.turnerocovid19g4.modelo.Sintoma;
+import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class SecondaryController implements Initializable{
-
+/**
+ *
+ * @author lfrei
+ */
+public class doctorsFormController {
     
     @FXML
     private JFXTextField nombreTexto;
@@ -38,13 +38,7 @@ public class SecondaryController implements Initializable{
     private JFXTextField cedulaTexto;
     
     @FXML
-    private DatePicker fechaNac;
-    
-    @FXML
-    private JFXComboBox comboGenero;
-    
-    @FXML
-    private JFXComboBox comboSintoma;
+    private JFXTextField especialidadTexto;
     
     @FXML
     private JFXButton bttGuardar;
@@ -54,16 +48,13 @@ public class SecondaryController implements Initializable{
         String nombre=nombreTexto.getText();
         String apellidos=apellidosTexto.getText();
         String cedula=cedulaTexto.getText();
-        Genero genero = (Genero)comboGenero.getValue();
-        LocalDate fecha=fechaNac.getValue();
-        Sintoma sintoma = (Sintoma)comboSintoma.getValue();
+        String especialidad=especialidadTexto.getText();
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
-                && sintoma!=null && genero!=null && fecha!=null){
-            Paciente persona = new Paciente(cedula,nombre,apellidos,fecha,genero);
-            Data.getInstance().nuevaCita(new Cita(persona,sintoma));
-            //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
-            ManejoArchivo.registrarPaciente(persona);
-            App.setRoot("primarySecond");
+                && especialidad.trim().length()>0){
+            Medico persona = new Medico(nombre,apellidos,cedula,especialidad);
+            Data.getInstance().getMedicos().add(persona);
+            ManejoArchivo.registrarMedico(persona);
+            App.setRoot("administrationMenu");
             App.setTamano(290, 375);
         }else{
             //Muestra alerta
@@ -77,20 +68,9 @@ public class SecondaryController implements Initializable{
     
     @FXML
     private void cerrar() throws IOException{
-        App.setRoot("primarySecond");
+        App.setRoot("administrationMenu");
         App.setTamano(290, 375);
     };
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        comboGenero.getItems().add(Genero.HOMBRE);
-        comboGenero.getItems().add(Genero.MUJER);
-        for(Sintoma sintoma: Data.getInstance().getSintomas()){
-            comboSintoma.getItems().add(sintoma);
-        }
-    }
     
-    
-
     
 }

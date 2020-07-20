@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="280.0" prefWidth="330.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
+<VBox alignment="CENTER" prefHeight="280.0" prefWidth="330.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.doctorsFormController">
    <children>
       <Label alignment="CENTER" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #68B684;" text="INGRESO DOCTOR">
          <font>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="350.0" prefWidth="290.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.QuaternaryController">
+<VBox alignment="CENTER" prefHeight="350.0" prefWidth="290.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.MenuPuestoController">
    <children>
       <Label style="-fx-background-color: #68B684;" text="ADMINISTRACION PUESTO">
          <font>

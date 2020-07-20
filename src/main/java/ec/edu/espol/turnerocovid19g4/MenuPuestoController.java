@@ -22,7 +22,7 @@ import javafx.scene.control.Button;
  *
  * @author lfrei
  */
-public class QuaternaryController implements Initializable {
+public class MenuPuestoController implements Initializable {
 
 
     @FXML
@@ -61,7 +61,7 @@ public class QuaternaryController implements Initializable {
 
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
-        App.setRoot("primarySecond");
+        App.setRoot("administrationMenu");
         App.setTamano(290, 375);
     }
 

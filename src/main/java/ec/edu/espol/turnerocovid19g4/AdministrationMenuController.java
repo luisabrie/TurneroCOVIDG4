@@ -22,7 +22,7 @@ import javafx.scene.control.Button;
  *
  * @author lfrei
  */
-public class PrimarySecondController implements Initializable {
+public class AdministrationMenuController implements Initializable {
 
 
     @FXML
@@ -43,19 +43,19 @@ public class PrimarySecondController implements Initializable {
     
     @FXML
     private void formPaciente() throws IOException {
-        App.setRoot("secondary");
+        App.setRoot("patientsForm");
         App.setTamano(330, 490);
     }
 
     @FXML
     private void formDoctor() throws IOException {
-        App.setRoot("tertiary");
+        App.setRoot("doctorsManagement");
         App.setTamano(330, 280);
     }
 
     @FXML
     private void adminPuesto() throws IOException {
-        App.setRoot("quaternary");
+        App.setRoot("menuPuesto");
         App.setTamano(290, 350);
     }
 

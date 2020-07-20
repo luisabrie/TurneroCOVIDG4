@@ -88,27 +88,27 @@ public class PatientsManagementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        System.out.println("1");
+        
         ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.submit(fetchPuestos);
-        System.out.println("2");
+        
         fetchPuestos.setOnSucceeded((var event) -> {
-            System.out.println("3");
+            
             Data.getInstance().setMapaPuesto(FXCollections.observableMap(fetchPuestos.getValue()));
             mapaPuesto = Data.getInstance().getMapaPuesto();
             
-            System.out.println("4");
+            
             int n = mapaPuesto.size();
-            System.out.println("5");
+            
             lblPuestosTotal.setText("Puestos (" + n + ")");
-            System.out.println("6");
+            
             flowpane = new FlowPane();
             flowpane.setMaxWidth(286);
             flowpane.setStyle("-fx-background-color: #474C5F");
                 for (Map.Entry<Puesto,PuestoBotonController> entry : mapaPuesto.entrySet()){
                     //load specific item
                     Puesto puesto = entry.getKey();
-                    System.out.println(puesto);
+                    
                     FXMLLoader loader = new FXMLLoader(App.class.getResource("puestoBoton.fxml"));
                     PuestoBotonController controller = entry.getValue();
                     loader.setController(controller);
@@ -123,12 +123,14 @@ public class PatientsManagementController implements Initializable {
                     controller.setPuesto(puesto);
                     controller.getLbPuestoID().setOnAction(e -> {
                             if (currentPuesto == null)
-                                controller.puestoSeleccionado();
-                            else
-                                mapaPuesto.get(currentPuesto).puestoNoSeleccionado();
-                            currentPuesto = puesto;
+                                if (controller.getPuesto().getCita() != null)
+                                    controller.setColor(0);
+                            
                             Cita cita = controller.getPuesto().getCita();
                             if (cita != null){ 
+                                controller.setColor(0);
+                                if (currentPuesto != null) mapaPuesto.get(currentPuesto).setColor(1);
+                                currentPuesto = puesto;
                                 lblSintoma.setText("Sintoma: "+ cita.getSintoma().getNombre());
                                 lblPatientsName.setText(cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido());
                                 lblInfoPuesto.setText("Puesto ("+currentPuesto.getCodPuesto()+") | Doctor  ("+currentPuesto.getMedicoEncargado().getNombre()+" "+currentPuesto.getMedicoEncargado().getApellido()+")");
@@ -155,13 +157,15 @@ public class PatientsManagementController implements Initializable {
                             lblPuestosTotal.setText("Puestos (" + mapaPuesto.size() + ")");
                             controller.setPuesto(puesto);
                             controller.getLbPuestoID().setOnAction(e -> {
+                                
                             if (currentPuesto == null)
-                                controller.puestoSeleccionado();
-                            else
-                                mapaPuesto.get(currentPuesto).puestoNoSeleccionado();
+                                if (controller.getPuesto().getCita() != null)
+                                    controller.setColor(0);
+                            Cita cita = controller.getPuesto().getCita();
+                            if (cita != null){ 
+                                controller.setColor(0);
+                                if (currentPuesto != null) mapaPuesto.get(currentPuesto).setColor(1);
                                 currentPuesto = puesto;
-                                Cita cita = controller.getPuesto().getCita();
-                                if (cita != null){ 
                                     lblSintoma.setText("Sintoma: "+ cita.getSintoma().getNombre());
                                     lblPatientsName.setText(cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido());
                                     lblInfoPuesto.setText("Puesto ("+currentPuesto.getCodPuesto()+") | Doctor  ("+currentPuesto.getMedicoEncargado().getNombre()+" "+currentPuesto.getMedicoEncargado().getApellido()+")");
@@ -196,10 +200,12 @@ public class PatientsManagementController implements Initializable {
                         }
                         cita.setReceta(recetita);
                         }
-                        System.out.println(cita);
+                        
                         currentPuesto.setCita(null);
                         mapaPuesto.get(currentPuesto).setPuesto(currentPuesto);
+                        mapaPuesto.get(currentPuesto).setColor(2);
                         Data.getInstance().getPuestosAtendiendo().add(currentPuesto);
+                        
                         inicializarTableDiagnostico();
                         inicializarTableReceta();
                         lblInfoPuesto.setText("Esperando seleccion de un puesto");
@@ -363,6 +369,7 @@ public class PatientsManagementController implements Initializable {
         protected Map<Puesto,PuestoBotonController> call() throws Exception {
             Map<Puesto,PuestoBotonController> mapa = new HashMap<>();
             try {
+                
                 for (Puesto puesto : Data.getInstance().getPuestos()) {
                     PuestoBotonController puestoC = new PuestoBotonController();
                     mapa.put(puesto, puestoC);

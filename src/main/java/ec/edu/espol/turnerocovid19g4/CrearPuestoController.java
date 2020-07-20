@@ -70,7 +70,7 @@ public class CrearPuestoController implements Initializable {
             PuestoBotonController boton = new PuestoBotonController();
             boton.setPuesto(puesto);
             Data.getInstance().getMapaPuesto().put(puesto, boton);
-            App.setRoot("quaternary");
+            App.setRoot("menuPuesto");
             App.setTamano(290, 350);
         }else{
             //Muestra alerta
@@ -85,7 +85,7 @@ public class CrearPuestoController implements Initializable {
 
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
-        App.setRoot("quaternary");
+        App.setRoot("menuPuesto");
         App.setTamano(290, 350);
     };
     

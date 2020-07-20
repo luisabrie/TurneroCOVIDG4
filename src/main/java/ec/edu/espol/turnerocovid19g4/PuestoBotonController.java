@@ -43,17 +43,30 @@ public class PuestoBotonController implements Initializable {
         this.puesto = puesto;
         if (lbPuestoID != null){
             lbPuestoID.setText(puesto.getCodPuesto());
-            Cita cita = puesto.getCita();
-            if (cita == null) {
-            }
-            else {
-            }
+            setColor(1);
         }
     }
     
-    public void puestoSeleccionado(){
+    public void setColor(int estado){
+        
+        switch (estado){
+            case (0):{ //Seleccionado Amarillo
+                lbPuestoID.setStyle("-fx-background-color: #FF9F1C;");
+                break;
+            }
+            case (1):{ //Asignado Rojo
+                
+                lbPuestoID.setStyle("-fx-background-color: #E71D36;");
+                if (puesto.getCita() != null)
+                    break;                    
+            }
+            case (2):{ //Desocupado Verde
+                lbPuestoID.setStyle("-fx-background-color: #2EC4B6;");
+                break;
+            }
+        }
     }
-
+   
     public Button getLbPuestoID() {
         return lbPuestoID;
     }
@@ -61,11 +74,6 @@ public class PuestoBotonController implements Initializable {
     public void setLbPuestoID(Button lbPuestoID) {
         this.lbPuestoID = lbPuestoID;
     }
-
-    void puestoNoSeleccionado() {
-        System.out.println("Eliminando"+lbPuestoID.getText());
-    }
-
     public Puesto getPuesto() {
         return puesto;
     }

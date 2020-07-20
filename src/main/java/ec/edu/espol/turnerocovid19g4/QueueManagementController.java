@@ -18,7 +18,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
-public class PrimaryController implements Initializable {
+public class QueueManagementController implements Initializable {
     
     private MediaPlayer mediaPlayer;
     private Queue<HBox> colaTurno;
@@ -67,7 +67,7 @@ public class PrimaryController implements Initializable {
         public void run() { 
             while(true){
                 synchronized(l){
-                    while(!Data.getInstance().getPuestosAtendiendo().isEmpty() && !Data.getInstance().getCitas().isEmpty()){
+                    if(!Data.getInstance().getPuestosAtendiendo().isEmpty() && !Data.getInstance().getCitas().isEmpty()){
                         Puesto p = Data.getInstance().getPuestosAtendiendo().poll();
                         Cita c = Data.getInstance().getCitas().poll();
                         c.setMedico(p.getMedicoEncargado()); 

@@ -24,7 +24,7 @@ public class App extends Application {
     @Override
     public void start(Stage s) throws IOException {
         stage=new Stage();
-        scene = new Scene(loadFXML("primarySecond"), 290, 375);
+        scene = new Scene(loadFXML("administrationMenu"), 290, 375);
         stage.setScene(scene);
         stage.setTitle("TurneroCovid19G4");
         stage.show();
@@ -52,7 +52,7 @@ public class App extends Application {
     
     static void escenario(Scene sc, Stage stage1) throws IOException{
         stage1=new Stage();
-        sc=new Scene(loadFXML("primary"),720,480);
+        sc=new Scene(loadFXML("queueManagement"),720,480);
         stage1.setScene(sc);
         stage1.setTitle("TurneroCovid19G4");
         stage1.show();

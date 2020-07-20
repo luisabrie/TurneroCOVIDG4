@@ -1,7 +1,19 @@
-/*
- * Empty Stylesheet file.
- */
+.button3
+{
+    -fx-background-color : #2EC4B6;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 12;
+    -fx-border-insets: -5;
+    -fx-border-color: #2EC4B6;
 
-.mainFxmlClass {
-
+}
+.button3:hover
+{
+    -fx-background-color : #FDFFFC;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 12;  
+    -fx-border-insets: -5;
+    -fx-border-color: #FDFFFC;
 }

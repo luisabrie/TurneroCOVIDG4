@@ -99,7 +99,6 @@ public class ManejoArchivo {
 
             File[] files = new File(path).listFiles();
             for (File f : files) {
-                System.out.println(f);
                 videos.addLast(f);
             }
         }
@@ -108,9 +107,7 @@ public class ManejoArchivo {
     private static File obtenerArchivoDesdeRecursos(String archivo) {
         
         
-        //URL resource = App.class.getResource("datos/"+ archivo);
         String resource = "src/data/"+ archivo;
-        System.out.println(resource);
         if (resource == null) {
             throw new IllegalArgumentException("¡No se ha encontrado el archivo: "+archivo+"!");
         } else {

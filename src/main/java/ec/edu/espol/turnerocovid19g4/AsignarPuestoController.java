@@ -61,7 +61,7 @@ public class AsignarPuestoController implements Initializable {
             Data.getInstance().getPuestosAtendiendo().offer(puesto);
             Data.getInstance().getPuestos().get(Data.getInstance().getPuestos().indexOf(puesto));
             Data.getInstance().getMapaPuesto().get(puesto).getPuesto().setMedicoEncargado(medico);
-            App.setRoot("quaternary");
+            App.setRoot("menuPuesto");
             App.setTamano(290, 375);
         }else{
             //Muestra alerta
@@ -75,7 +75,7 @@ public class AsignarPuestoController implements Initializable {
 
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
-         App.setRoot("quaternary");
+         App.setRoot("menuPuesto");
          App.setTamano(290, 350);
     }
 

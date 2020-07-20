@@ -16,6 +16,4 @@ public interface List <E>{
     E get(int index);
     boolean contains(E e);
     boolean remove(int index);
-    
-    
 }

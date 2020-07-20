@@ -4,14 +4,40 @@ package ec.edu.espol.turnerocovid19g4.util;
 
 import java.util.Iterator;
 
-public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
+/**
+ *
+ * @author lfrei
+ */
+public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E> {
+    
     private Node<E> last;
     private int current;
+    
     public CircularSimplyLinkedList()
     {
         last = null;
         current = 0;
     }
+    
+    @Override
+    public Iterator<E> iterator() {
+        Iterator<E> it = new Iterator<E>() {
+            private Node<E> p = last.next;
+            @Override
+            public boolean hasNext() {
+                return p!=null;
+            }
+
+            @Override
+            public E next() {
+                E tmp = p.data;
+                p = p.next;
+                return tmp;
+            }
+        };
+        return it;
+    }
+    
     private class Node<E>
     {
         private E data;
@@ -21,61 +47,30 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         {
             this.data = data;
             this.next = null;
-        }
-
-        public E getData() {
-            return data;
-        }
-
-        public void setData(E data) {
-            this.data = data;
-        }
-
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public void setNext(Node<E> next) {
-            this.next = next;
-        }
-        
+        }        
     }
-    @Override
-    public String toString(){
-        if(isEmpty()) return "[]\n";
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for(Node<E> p = last.next; p!=last; p=p.next)//hasta el penultimo
-        {
-            sb.append(p.data);
-            sb.append(",");
-        }
-        sb.append(last.data);
-        sb.append("]");
-        return sb.toString();
-           
-    }
-    
-    
     
     @Override
     public boolean addFirst(E e) {
-        Node<E> n=new Node<>(e);
-        if(isEmpty()){ 
-            last= n;
-            last.next=last;
-        }else{
-            n.next=last.next;
-            last.next=n;
+        Node<E> n = new Node<>(e);
+        if(e==null)return false;
+        if(isEmpty()){
+            last = n;
+            last.next = last;
+        }
+        else
+        {
+            n.next = last.next;
+            last.next = n;
         }
         current++;
         return true;
-            
     }
 
     @Override
     public boolean addLast(E e) {
         Node<E> n = new Node<>(e);
+        if(e==null)return false;
         if(isEmpty()){
             last = n;
             last.next = last;
@@ -91,42 +86,28 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     }
 
     @Override
-    public E getFirst() throws NullPointerException{
-        if(isEmpty()){
-            throw new NullPointerException();
-        }
-        else
-        {
-            return last.next.getData();
-        }
+    public E getFirst() {
+        if(isEmpty()) return null;
+        return last.next.data;
     }
 
     @Override
-    public E getLast() throws NullPointerException{
-        if(isEmpty()){
-            throw new NullPointerException();
-        }
-        else
-        {
-            return last.getData();
-        }
-        
+    public E getLast() {
+        if(isEmpty()) return null;
+        return last.data;
     }
 
     @Override
-    public int indexOf(E e) throws NullPointerException{
-        int index=0;
-        if(e==null||isEmpty()){
-            throw new NullPointerException();
-        }else{
-            for(Node <E> n=last.next;index<current;n=n.next){
-                if(n.getData()==e){
-                    return index;
-                }
-                index++;
-            }
+    public int indexOf(E e) {
+        if(isEmpty())return -1;
+        int i=0;
+        Node<E> q=last.next;
+        while(q!=null && !q.data.equals(e)){
+            q = q.next;
+            i++;
         }
-        return -1;
+        if(i==current) return -1;
+        return i;
     }
 
     @Override
@@ -135,105 +116,85 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     }
 
     @Override
-    public boolean removeLast() throws NullPointerException{
-        if(isEmpty()) throw  new NullPointerException();
-        else if(current==1){
-            last.setData(null);
-            last.setNext(null);
-            
-        }else{
-            Node<E> n=getPrevious(last);//capturo referencia al nuevo last;
-            n.next=last.next;
-            last.setData(null);
-            last.setNext(null);
-            last=n;
-        }
-        current--;
-        return true;
-    }
-    private Node<E> getPrevious(Node<E> p) throws IllegalArgumentException{//lanzar exepcion illegal argument
-        if(p==null) throw  new IllegalArgumentException();
-        int index=0;
-        for(Node<E> q=this.last;index<current;q=q.getNext()){
-            if(q.getNext()==p){
-                return q;
-            }
-        }
-        return null;
-    }
-    @Override
-    public boolean removeFirst() throws NullPointerException{
-        if(isEmpty()) throw  new NullPointerException();
-        else if(current==1){
-            last.setData(null);
-            last.setNext(null);
-        }else{
-            Node<E> nuevoFirst=last.next.next;
-            last.next.setData(null);
-            last.next.setNext(null);
-            last.next=nuevoFirst;
-            
-        }
-        current--;
-        return true;
-    }
-
-    @Override
-    public boolean insert(int index, E e) throws IndexOutOfBoundsException, NullPointerException{
-        if(index<0 || index>this.size()){
-            throw new IndexOutOfBoundsException("Index fuera de rango");
-        }
-        else if(e==null){
-            throw  new NullPointerException();
-        }
-        else if(index==0){
-            
-            return addFirst(e);
-        }
-        else if(index==(current)){
-            
-            return addLast(e);
+    public boolean removeLast() {
+        if(isEmpty()) return false;
+        else if(last==last.next){
+            last.data=null;
+            last.next=null;
+            last=null;
         }
         else{
-            //creo un nodo
-            Node<E> q= getNode(index-1);//implementar Node <E > nodeIndex(index)
-            Node<E> p=q.getNext();
-            
-            Node<E> node=new Node<>(e);//nodo a insertar
-            q.setNext(node);
-            node.setNext(p);
-            
-            current++;
-            return true;
+            Node<E> q=getPrevious(last);
+            q.next=last.next;
+            last.data=null;
+            last.next=null;
+            last=q;
         }
-        
+        current--;
+        return true;
     }
-    private Node<E> getNode(int index) throws IndexOutOfBoundsException{
-        if(isEmpty()|| (index<0 || index>=current)){//si esta vacio o el indice no es correcto
-            throw new IndexOutOfBoundsException("indice no valido o lista vacia");
-            
-        }else{
-            int contador=0;
-            for(Node<E> q=last.next; contador<current;q=q.getNext()){
-                if(contador==index){
-                    return q;
-                }
-                contador++;
-            }
-            return null;//si no lo encuentra
-        }
-        
-        
+    
+    private Node<E> getPrevious(Node<E> p)
+    {
+        Node<E> q = last;
+        if(isEmpty()||p==null) return null;
+        do{
+            if(q.next==p)return q;
+            q=q.next;
+        }while(q!=last);
+        return null;
     }
 
     @Override
-    public boolean set(int index, E e) throws IndexOutOfBoundsException{
-        if(index<0 || index>=this.size()){
-            throw new IndexOutOfBoundsException("Index fuera de rango");
+    public boolean removeFirst() {
+        if(isEmpty()) return false;
+        else if(last==last.next){
+            last.data=null;
+            last.next=null;
+            last=null;
         }
-        getNode(index).setData(e);
+        else
+        {
+            Node<E> p = last.next;
+            last.next = p.next;
+            p.data = null;//help GC
+            p.next = null;
+        }
+        current--;
         return true;
     }
+
+    @Override
+    public boolean insert(int index, E e) {
+        if(index>current||index<0||e==null) return false;
+        else if(isEmpty()) return addLast(e);
+        int i=0;
+        Node<E> q=last.next;
+        while(i!=index){
+            q = q.next;
+            i++;
+        }
+        Node<E> p=new Node<>(e);
+        Node<E> r=getPrevious(q);
+        r.next=p;
+        p.next=q;
+        current++;
+        return true;
+    }
+
+    @Override
+    public boolean set(int index, E e) {
+        if(isEmpty()||index>=current||index<0) return false;
+        int i=0;
+        Node<E> q=last.next;
+        while(i!=index){
+            q = q.next;
+            i++;
+        }
+        q.data=e;
+        return true;
+    }
+
     @Override
     public boolean isEmpty() {
         return last == null;
@@ -241,67 +202,62 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
 
     @Override
     public E get(int index) {
-        return getNode(index).getData();
+        if(isEmpty()||index>=current||index<0)return null;
+        int i=0;
+        Node<E> q=last.next;
+        E p=q.data;
+        while(i!=index){
+            q = q.next;
+            p = q.data;
+            i++;
+        }
+        return p;
     }
 
     @Override
-    public boolean contains(E e) throws IllegalArgumentException{
-        if(e==null) throw new IllegalArgumentException("Argumento nullo");
-        int index=0;
-        for(Node<E> n=last.next;index<current;n=n.getNext()){
-            if(n.getData()==e) 
+    public boolean contains(E e) {
+        Node<E> p = last.next;
+        do{
+            if(p.data.equals(e))
                 return true;
-            index++;
-        }
+            p=p.next;
+        }while(p!=last.next);
         return false;
     }
 
     @Override
-    public boolean remove(int index) throws IndexOutOfBoundsException {
-        if(isEmpty()) return false;
-        if(index<0 || index>=this.size()){
-            throw new IndexOutOfBoundsException("Index fuera de rango");
+    public boolean remove(int index) {
+        if(isEmpty()||index>=current||index<0) return false;
+        int i=0;
+        Node<E> q=last.next;
+        while(i!=index){
+            q = q.next;
+            i++;
         }
-        else if(index==0){
-            removeFirst();
-            return true;
-        }
-        else if(index==size()-1){
-            removeLast();
-            return true;
-        }else{
-            Node<E> n=getNode(index);
-            getPrevious(n).setNext(n.getNext());//enlazo el anterior al posterior
-            n.setData(null);
-            n.setNext(null);
-            current--;
-            return true;
-        }
-        
+        if(q.equals(last)) return removeLast();
+        else if(q==last.next)return removeFirst();
+        Node<E> p=getPrevious(q);
+        p.next=q.next;
+        q.data=null;
+        q.next=null;
+        current--;
+        return true;
     }
     
     @Override
-    public Iterator<E> iterator(){
-         Iterator<E>it= new Iterator<E>(){
-             public Node<E> p = last.next;//inicio
-             public int index=0;
-             @Override
-             public boolean hasNext() {
-                return p!=null;//carrusel
-                //return !(index==efectivo) recorre una vez
-             }
-
-             @Override
-             public E next() {
-                E tmp = p.getData();
-                p=p.getNext();
-                index++;
-                return tmp;
-             }
-             
-         };
-     return it;    
-     }
-     
+    public String toString()
+    {
+        if(isEmpty()) return "[]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(Node<E> p = last.next; p!=last; p=p.next)//hasta el penultimo
+        {
+            sb.append(p.data);
+            sb.append(",");
+        }
+        sb.append(last.data);
+        sb.append("]");
+        return sb.toString();
+    }
+    
 }
-
