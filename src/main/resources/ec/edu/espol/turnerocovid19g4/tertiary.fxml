@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
+<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
    <children>
-      <Label text="INGRESO DOCTOR">
+      <Label alignment="CENTER" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #68B684;" text="INGRESO DOCTOR">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
@@ -52,8 +52,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="bttGuardar" buttonType="RAISED" onAction="#guardar" prefHeight="28.0" prefWidth="90.0" text="Guardar" GridPane.rowIndex="1" />
-            <JFXButton fx:id="bttCerrar" onAction="#cerrar" prefHeight="26.0" prefWidth="90.0" text="Cerrar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton fx:id="bttGuardar" buttonType="RAISED" onAction="#guardar" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #297373;" text="Guardar" textFill="WHITE" GridPane.rowIndex="1" />
+            <JFXButton fx:id="bttCerrar" onAction="#cerrar" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

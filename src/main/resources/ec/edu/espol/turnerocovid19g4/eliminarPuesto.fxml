@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="312.0" prefWidth="497.0" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.EliminarPuestoController">
+<VBox alignment="CENTER" prefHeight="312.0" prefWidth="497.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.EliminarPuestoController">
    <children>
-      <Label text="ELIMINAR PUESTO">
+      <Label alignment="CENTER" prefHeight="20.0" prefWidth="210.0" style="-fx-background-color: #68B684;" text="ELIMINAR PUESTO">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -23,9 +23,9 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="73.0" prefWidth="520.0" spacing="40.0">
          <children>
-            <JFXButton fx:id="bttEliminarPuesto" onAction="#eliminarPuesto" text="Eliminar Puesto" />
-            <JFXButton fx:id="bttEliminarMedico" onAction="#eliminarMedico" text="Eliminar Medico" />
-            <JFXButton fx:id="bttCerrar" onAction="#cerrar" text="Cerrar" />
+            <JFXButton fx:id="bttEliminarPuesto" buttonType="RAISED" onAction="#eliminarPuesto" style="-fx-background-color: #297373;" text="Eliminar Puesto" textFill="WHITE" />
+            <JFXButton fx:id="bttEliminarMedico" buttonType="RAISED" onAction="#eliminarMedico" style="-fx-background-color: #297373;" text="Eliminar Medico" textFill="WHITE" />
+            <JFXButton fx:id="bttCerrar" buttonType="RAISED" onAction="#cerrar" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />

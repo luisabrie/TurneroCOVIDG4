@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.PrimarySecondController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="287.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.PrimarySecondController">
    <children>
-      <Label alignment="CENTER" text="Administracion">
+      <Label alignment="CENTER" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #68B684;" text="Administracion">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
          <effect>
             <Blend />
          </effect>
       </Label>
-      <JFXButton fx:id="fPaciente" onAction="#formPaciente" text="Formulario Paciente" />
-      <JFXButton fx:id="fDoctor" onAction="#formDoctor" text="Formulario Doctor" />
-      <JFXButton fx:id="fPuesto" onAction="#adminPuesto" text="Administrar Puesto" />
-      <JFXButton fx:id="fAtencion" onAction="#atencionCliente" text="Atencion Cliente" />
+      <JFXButton fx:id="fPaciente" buttonType="RAISED" onAction="#formPaciente" style="-fx-background-color: #297373;" text="Formulario Paciente" textFill="WHITE" />
+      <JFXButton fx:id="fDoctor" buttonType="RAISED" onAction="#formDoctor" style="-fx-background-color: #297373;" text="Formulario Doctor" textFill="WHITE" />
+      <JFXButton fx:id="fPuesto" buttonType="RAISED" onAction="#adminPuesto" style="-fx-background-color: #297373;" text="Administrar Puesto" textFill="WHITE" />
+      <JFXButton fx:id="fAtencion" buttonType="RAISED" onAction="#atencionCliente" style="-fx-background-color: #297373;" text="Atencion Cliente" textFill="WHITE" />
    </children>
    <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />

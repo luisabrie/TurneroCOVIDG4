@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.QuaternaryController">
+<VBox alignment="CENTER" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.QuaternaryController">
    <children>
-      <Label text="ADMINISTRACION PUESTO">
+      <Label style="-fx-background-color: #68B684;" text="ADMINISTRACION PUESTO">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Label>
-      <JFXButton fx:id="bttCrear" onAction="#crearPuesto" text="Crear" />
-      <JFXButton fx:id="bttEliminar" onAction="#eliminarPuesto" text="Eliminar" />
-      <JFXButton fx:id="bttAsignar" onAction="#asignarPuesto" text="Asignar" />
-      <JFXButton fx:id="bttCerrar" onAction="#cerrar" text="Cerrar" />
+      <JFXButton fx:id="bttCrear" buttonType="RAISED" onAction="#crearPuesto" style="-fx-background-color: #297373;" text="Crear" textFill="WHITE" />
+      <JFXButton fx:id="bttEliminar" buttonType="RAISED" onAction="#eliminarPuesto" style="-fx-background-color: #297373;" text="Eliminar" textFill="WHITE" />
+      <JFXButton fx:id="bttAsignar" buttonType="RAISED" onAction="#asignarPuesto" style="-fx-background-color: #297373;" text="Asignar" textFill="WHITE" />
+      <JFXButton fx:id="bttCerrar" buttonType="RAISED" onAction="#cerrar" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" />
    </children>
    <opaqueInsets>
       <Insets />

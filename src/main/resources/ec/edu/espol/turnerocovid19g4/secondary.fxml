@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="488.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.SecondaryController">
+<VBox alignment="CENTER" prefHeight="488.0" prefWidth="329.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.SecondaryController">
   <children>
-    <Label alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="INGRESO PACIENTE" textAlignment="CENTER">
+    <Label alignment="CENTER" prefHeight="20.0" prefWidth="136.0" style="-fx-background-color: #68B684;" text="INGRESO PACIENTE" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
@@ -40,7 +40,7 @@
       <HBox prefHeight="24.0" prefWidth="289.0">
          <children>
             <Label prefHeight="17.0" prefWidth="87.0" text="Nacimiento" />
-            <DatePicker fx:id="fechaNac" />
+            <DatePicker fx:id="fechaNac" style="-fx-background-color: #B2B2B2;" />
          </children>
       </HBox>
       <HBox prefHeight="29.0" prefWidth="289.0">
@@ -68,8 +68,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="bttGuardar" buttonType="RAISED" onAction="#guardar" prefHeight="26.0" prefWidth="100.0" text="Guardar" GridPane.rowIndex="2" />
-            <JFXButton fx:id="bttCerrar" buttonType="RAISED" onAction="#cerrar" prefHeight="30.0" prefWidth="100.0" ripplerFill="#7c515c" text="Cerrar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXButton fx:id="bttGuardar" buttonType="RAISED" onAction="#guardar" prefHeight="26.0" prefWidth="100.0" ripplerFill="#aa1c1c" style="-fx-background-color: #297373;" text="Guardar" textFill="WHITE" GridPane.rowIndex="2" />
+            <JFXButton fx:id="bttCerrar" buttonType="RAISED" onAction="#cerrar" prefHeight="30.0" prefWidth="100.0" ripplerFill="#7c515c" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
   </children>

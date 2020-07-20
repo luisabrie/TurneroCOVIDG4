@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="311.0" prefWidth="339.0" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.CrearPuestoController">
+<VBox alignment="CENTER" prefHeight="311.0" prefWidth="339.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.CrearPuestoController">
    <children>
-      <Label text="CREAR PUESTO">
+      <Label alignment="CENTER" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #68B684;" text="CREAR PUESTO">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -30,8 +30,8 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="64.0" prefWidth="259.0" spacing="40.0">
          <children>
-            <JFXButton fx:id="bttGuardar" onAction="#guardarPuesto" text="Guardar" />
-            <JFXButton fx:id="bttCerrar" onAction="#cerrar" text="Cerrar" />
+            <JFXButton fx:id="bttGuardar" onAction="#guardarPuesto" style="-fx-background-color: #297373;" text="Guardar" textFill="WHITE" />
+            <JFXButton fx:id="bttCerrar" onAction="#cerrar" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
