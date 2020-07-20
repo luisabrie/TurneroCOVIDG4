@@ -1,7 +1,3 @@
 Carlos|Reyes|09345234|cardio
 Nicole|Zambrano|23435345|pediatra
 Jose|Perez|0986546798|cardiologo
-agregar|x|x|x
-F|F|F|F
-G|G|G|G
-E|E|E|E

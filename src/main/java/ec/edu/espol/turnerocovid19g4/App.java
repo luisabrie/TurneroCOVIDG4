@@ -30,9 +30,11 @@ public class App extends Application {
         stage.show();
         escenario(scene1,stage1);
         stage2=new Stage();
-        scene2 = new Scene(loadFXML("patientsManagement"), 1049, 594);
+        scene2 = new Scene(loadFXML("patientsManagement"), 1049, 649);
         stage2.setScene(scene2);
+        stage2.setResizable(false);
         stage2.show();
+        
     }
     
     @Override

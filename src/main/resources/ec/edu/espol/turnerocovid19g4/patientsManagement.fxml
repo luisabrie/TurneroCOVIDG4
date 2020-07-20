@@ -20,7 +20,7 @@
          <left>
             <Pane prefHeight="509.0" prefWidth="497.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="paneGridPuestos" layoutX="91.0" layoutY="160.0" prefHeight="343.0" prefWidth="286.0" style="-fx-background-color: #474C5F #474C5F #474C5F #474C5F;">
+                  <ScrollPane fx:id="paneGridPuestos" layoutX="91.0" layoutY="160.0" prefHeight="343.0" prefWidth="374.0" stylesheets="@../../../../styles/patientsmanagement.css">
                      <padding>
                         <Insets left="10.0" />
                      </padding>

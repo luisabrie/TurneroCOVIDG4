@@ -1,4 +1,0 @@
-F|Carlos
-G|G
-E|E
-GE|Jose

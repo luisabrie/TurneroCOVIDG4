@@ -4,7 +4,6 @@
     -fx-background-radius :  12;
     -fx-border-style: solid;
     -fx-border-radius: 12;
-    -fx-border-insets: -5;
     -fx-border-color: #2EC4B6;
 
 }
@@ -14,6 +13,13 @@
     -fx-background-radius :  12;
     -fx-border-style: solid;
     -fx-border-radius: 12;  
-    -fx-border-insets: -5;
     -fx-border-color: #FDFFFC;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
 }

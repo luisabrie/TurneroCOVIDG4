@@ -104,6 +104,8 @@ public class PatientsManagementController implements Initializable {
             
             flowpane = new FlowPane();
             flowpane.setMaxWidth(286);
+            flowpane.setHgap(5);
+            flowpane.setVgap(7);
             flowpane.setStyle("-fx-background-color: #474C5F");
                 for (Map.Entry<Puesto,PuestoBotonController> entry : mapaPuesto.entrySet()){
                     //load specific item
@@ -237,7 +239,7 @@ public class PatientsManagementController implements Initializable {
                 });
 
                 JFXTreeTableColumn<RecetaElemento, String> recetNombre = new JFXTreeTableColumn<>("Diagnostico");
-                recetNombre.setPrefWidth(200);
+                recetNombre.setPrefWidth(190);
                 recetNombre.setCellValueFactory((TreeTableColumn.CellDataFeatures<RecetaElemento, String> param) -> {
                     if (recetNombre.validateValue(param)) {
                         return param.getValue().getValue().nombreGenerico;
@@ -246,7 +248,7 @@ public class PatientsManagementController implements Initializable {
                     }
                 });
                 JFXTreeTableColumn<RecetaElemento, String> recetDosis = new JFXTreeTableColumn<>("Dosis");
-                                recetDosis.setPrefWidth(200);
+                                recetDosis.setPrefWidth(190);
                                 recetDosis.setCellValueFactory((TreeTableColumn.CellDataFeatures<RecetaElemento, String> param) -> {
                                     if (recetDosis.validateValue(param)) {
                                         return param.getValue().getValue().nombreGenerico;
@@ -276,13 +278,13 @@ public class PatientsManagementController implements Initializable {
 
                 
                 receta = FXCollections.observableArrayList();
-                receta.add(new RecetaElemento("1","2","3"));
+                receta.add(new RecetaElemento("{}","{Doble click para modificar}", " "));
                 final TreeItem<RecetaElemento> rooti = new RecursiveTreeItem<>(receta, RecursiveTreeObject::getChildren);
                 ContextMenu contextMenur = new ContextMenu();
                 MenuItem menuItem1r = new MenuItem("Añadir Medicamento");
                 MenuItem menuItem2r = new MenuItem("Eliminar Medicamento");
                 menuItem1r.setOnAction(e ->{
-                    receta.add(new RecetaElemento(" "," ", " "));
+                    receta.add(new RecetaElemento("{}","{Doble click para modificar}", " "));
                 });
                 menuItem2r.setOnAction(e ->{
                     TreeItem<RecetaElemento> selectedItem = (TreeItem<RecetaElemento>) tvReceta.getSelectionModel().getSelectedItem();
@@ -313,7 +315,7 @@ public class PatientsManagementController implements Initializable {
                 });
 
                 JFXTreeTableColumn<DiagnosticoElemento, String> diagNColumn = new JFXTreeTableColumn<>("Diagnostico");
-                diagNColumn.setPrefWidth(200);
+                diagNColumn.setPrefWidth(390);
                 diagNColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<DiagnosticoElemento, String> param) -> {
                     if (diagNColumn.validateValue(param)) {
                         return param.getValue().getValue().nombre;
@@ -338,13 +340,14 @@ public class PatientsManagementController implements Initializable {
                                                                               .getValue().codigo.set(t.getNewValue()));
                 
                 diagnostico = FXCollections.observableArrayList();
-                diagnostico.add(new DiagnosticoElemento(" "," "));
+                
+                diagnostico.add(new DiagnosticoElemento("{}","{Doble click para modificar}"));
                 final TreeItem<DiagnosticoElemento> root = new RecursiveTreeItem<>(diagnostico, RecursiveTreeObject::getChildren);
                 ContextMenu contextMenu = new ContextMenu();
                 MenuItem menuItem1 = new MenuItem("Añadir diagnostico");
                 MenuItem menuItem2 = new MenuItem("Eliminar diagnostico");
                 menuItem1.setOnAction(e ->{
-                    diagnostico.add(new DiagnosticoElemento(" "," "));
+                    diagnostico.add(new DiagnosticoElemento("{}","{Doble click para modificar}"));
                 });
                 menuItem2.setOnAction(e ->{
                     TreeItem<DiagnosticoElemento> selectedItem = (TreeItem<DiagnosticoElemento>) tvDiag.getSelectionModel().getSelectedItem();
