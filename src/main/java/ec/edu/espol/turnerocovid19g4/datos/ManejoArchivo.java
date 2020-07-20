@@ -106,12 +106,15 @@ public class ManejoArchivo {
         return videos;
     } 
     private static File obtenerArchivoDesdeRecursos(String archivo) {
-        URL resource = App.class.getResource("datos/"+ archivo);
-        System.out.println(resource.getPath());
+        
+        
+        //URL resource = App.class.getResource("datos/"+ archivo);
+        String resource = "src/data/"+ archivo;
+        System.out.println(resource);
         if (resource == null) {
             throw new IllegalArgumentException("¡No se ha encontrado el archivo: "+archivo+"!");
         } else {
-            return new File(resource.getFile());
+            return new File(resource);
         }
 
     }
