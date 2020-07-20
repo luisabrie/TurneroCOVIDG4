@@ -67,6 +67,7 @@ public class CrearPuestoController implements Initializable {
             ManejoArchivo.registrarPuesto(puesto);
             Data.getInstance().getPuestos().add(puesto);
             App.setRoot("quaternary");
+            App.setTamano(290, 350);
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -81,6 +82,7 @@ public class CrearPuestoController implements Initializable {
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
         App.setRoot("quaternary");
+        App.setTamano(290, 350);
     };
     
 

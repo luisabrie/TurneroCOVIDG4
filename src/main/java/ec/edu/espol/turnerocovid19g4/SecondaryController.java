@@ -64,6 +64,7 @@ public class SecondaryController implements Initializable{
             //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
             ManejoArchivo.registrarPaciente(persona);
             App.setRoot("primarySecond");
+            App.setTamano(290, 375);
         }else{
             //Muestra alerta
             Alert alert = new Alert(AlertType.ERROR);
@@ -77,6 +78,7 @@ public class SecondaryController implements Initializable{
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("primarySecond");
+        App.setTamano(290, 375);
     };
 
     @Override

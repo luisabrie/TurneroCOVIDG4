@@ -44,16 +44,19 @@ public class PrimarySecondController implements Initializable {
     @FXML
     private void formPaciente() throws IOException {
         App.setRoot("secondary");
+        App.setTamano(330, 490);
     }
 
     @FXML
     private void formDoctor() throws IOException {
         App.setRoot("tertiary");
+        App.setTamano(330, 280);
     }
 
     @FXML
     private void adminPuesto() throws IOException {
         App.setRoot("quaternary");
+        App.setTamano(290, 350);
     }
 
     @FXML

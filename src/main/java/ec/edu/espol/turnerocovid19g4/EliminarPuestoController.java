@@ -44,6 +44,7 @@ public class EliminarPuestoController implements Initializable {
             Data.getInstance().getPuestos().remove(puesto);
             Data.getInstance().getPuestosAtendiendo().remove(puesto); //remove en cola?
             App.setRoot("quaternary");
+            App.setTamano(290, 350);
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -78,6 +79,7 @@ public class EliminarPuestoController implements Initializable {
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("quaternary");
+        App.setTamano(290, 350);
     }
     
 }

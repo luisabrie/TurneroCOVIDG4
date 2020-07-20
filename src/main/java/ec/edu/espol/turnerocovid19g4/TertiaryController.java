@@ -55,6 +55,7 @@ public class TertiaryController {
             Data.getInstance().getMedicos().add(persona);
             ManejoArchivo.registrarMedico(persona);
             App.setRoot("primarySecond");
+            App.setTamano(290, 375);
         }else{
             //Muestra alerta
             Alert alert = new Alert(AlertType.ERROR);
@@ -68,6 +69,7 @@ public class TertiaryController {
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("primarySecond");
+        App.setTamano(290, 375);
     };
     
     
