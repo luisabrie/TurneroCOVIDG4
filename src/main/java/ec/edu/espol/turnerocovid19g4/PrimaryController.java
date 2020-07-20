@@ -61,10 +61,12 @@ public class PrimaryController implements Initializable {
     }
     
     class Refrescador implements Runnable{
+        private final Object l=new Object();
         @Override
-        public void run() {
-                while(true){
-                    //System.out.println("Hilo Ejecu");
+        public void run() { 
+            while(true){
+                //System.out.println("Hilo Ejecu");
+                synchronized(l){
                     while(!Data.getInstance().getPuestosAtendiendo().isEmpty() && !Data.getInstance().getCitas().isEmpty()){
                         Puesto p = Data.getInstance().getPuestosAtendiendo().poll();
                         Cita c = Data.getInstance().getCitas().poll();
@@ -79,10 +81,8 @@ public class PrimaryController implements Initializable {
                         colaTurno.offer(contenedor);
                     }
                 }
-       
+            }
         }
-        
     }
-    
      
 }
