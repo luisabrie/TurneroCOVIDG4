@@ -25,6 +25,7 @@ public class App extends Application {
         stage=new Stage();
         scene = new Scene(loadFXML("primarySecond"), 290, 375);
         stage.setScene(scene);
+        stage.setTitle("TurneroCovid19G4");
         stage.show();
         escenario(scene1,stage1);
     }
@@ -48,6 +49,7 @@ public class App extends Application {
         stage1=new Stage();
         sc=new Scene(loadFXML("primary"),720,480);
         stage1.setScene(sc);
+        stage1.setTitle("TurneroCovid19G4");
         stage1.show();
     }
     
