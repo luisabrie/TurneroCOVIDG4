@@ -5,6 +5,9 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
@@ -31,13 +34,13 @@ public class CrearPuestoController implements Initializable {
 
 
     @FXML
-    private Button bttGuardar;
+    private JFXButton bttGuardar;
     @FXML
-    private Button bttCerrar;
+    private JFXButton bttCerrar;
     @FXML
-    private TextField txtNumero;
+    private JFXTextField txtNumero;
     @FXML
-    private ComboBox comboMedico;
+    private JFXComboBox comboMedico;
     /**
      * Initializes the controller class.
      * @param url

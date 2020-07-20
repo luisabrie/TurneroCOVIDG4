@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
@@ -27,13 +29,13 @@ public class AsignarPuestoController implements Initializable {
 
 
     @FXML
-    private ComboBox comboPuesto;
+    private JFXComboBox comboPuesto;
     @FXML
-    private ComboBox comboMedico;
+    private JFXComboBox comboMedico;
     @FXML
-    private Button bttAsignar;
+    private JFXButton bttAsignar;
     @FXML
-    private Button bttCerrar;
+    private JFXButton bttCerrar;
     /**
      * Initializes the controller class.
      */

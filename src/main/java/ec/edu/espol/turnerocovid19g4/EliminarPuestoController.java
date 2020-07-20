@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXComboBox;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import javafx.scene.control.ComboBox;
 public class EliminarPuestoController implements Initializable {
 
     @FXML
-    private ComboBox comboPuesto;
+    private JFXComboBox comboPuesto;
     /**
      * Initializes the controller class.
      * @param url
