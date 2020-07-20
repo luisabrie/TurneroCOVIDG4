@@ -1,40 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
+<VBox alignment="CENTER" prefHeight="280.0" prefWidth="330.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
    <children>
-      <Label text="Doctor" />
-      <HBox prefHeight="27.0" prefWidth="291.0">
+      <Label alignment="CENTER" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #68B684;" text="INGRESO DOCTOR">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="80.0" text="Nombre" />
-            <TextField fx:id="nombreTexto" />
+            <JFXTextField fx:id="nombreTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="27.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="79.0" text="Apellidos" />
-            <TextField fx:id="apellidosTexto" prefHeight="25.0" prefWidth="149.0" />
+            <JFXTextField fx:id="apellidosTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="25.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="79.0" text="Cedula" />
-            <TextField fx:id="cedulaTexto" />
+            <JFXTextField fx:id="cedulaTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="26.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="80.0" text="Especialidad" />
-            <TextField fx:id="especialidadTexto" />
+            <JFXTextField fx:id="especialidadTexto" />
          </children>
       </HBox>
       <GridPane>
@@ -48,8 +52,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="bttGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar" GridPane.rowIndex="1" />
-            <Button fx:id="bttCerrar" mnemonicParsing="false" onAction="#cerrar" text="Cerrar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton fx:id="bttGuardar" buttonType="RAISED" onAction="#guardar" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #297373;" text="Guardar" textFill="WHITE" GridPane.rowIndex="1" />
+            <JFXButton fx:id="bttCerrar" onAction="#cerrar" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

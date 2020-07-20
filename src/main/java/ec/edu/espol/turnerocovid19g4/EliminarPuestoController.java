@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXComboBox;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import javafx.scene.control.ComboBox;
 public class EliminarPuestoController implements Initializable {
 
     @FXML
-    private ComboBox comboPuesto;
+    private JFXComboBox comboPuesto;
     /**
      * Initializes the controller class.
      * @param url
@@ -31,16 +32,19 @@ public class EliminarPuestoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        for(Puesto puesto:Data.getInstance().getPuest()){
+        for(Puesto puesto:Data.getInstance().getPuestos()){
             comboPuesto.getItems().add(puesto);
         }
     }    
     
     @FXML
-    private void eliminarPuesto(){
+    private void eliminarPuesto() throws IOException{
         Puesto puesto=(Puesto) comboPuesto.getValue();
         if(puesto!=null && puesto.getMedicoEncargado()==null){
-            Data.getInstance().getPuest().remove(puesto);
+            Data.getInstance().getPuestos().remove(puesto);
+            Data.getInstance().getPuestosAtendiendo().remove(puesto); //remove en cola?
+            App.setRoot("quaternary");
+            App.setTamano(290, 350);
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -54,8 +58,14 @@ public class EliminarPuestoController implements Initializable {
     @FXML
     private void eliminarMedico(){
         Puesto puesto=(Puesto) comboPuesto.getValue();
-        if(puesto!=null && puesto.getMedicoEncargado()!=null){
+        if(puesto!=null && puesto.getMedicoEncargado()!=null && puesto.getCita()==null){
+            puesto.getMedicoEncargado().setOcupado(false);
             puesto.setMedicoEncargado(null);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Eliminacion Medico");
+            alert.setContentText("Eliminacion de Medico exitoso");
+            alert.showAndWait();
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -69,6 +79,7 @@ public class EliminarPuestoController implements Initializable {
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("quaternary");
+        App.setTamano(290, 350);
     }
     
 }

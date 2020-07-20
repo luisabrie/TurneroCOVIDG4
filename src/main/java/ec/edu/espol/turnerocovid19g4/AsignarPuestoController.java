@@ -7,13 +7,9 @@ package ec.edu.espol.turnerocovid19g4;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
-import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,66 +20,61 @@ import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
  * @author lfrei
  */
-public class CrearPuestoController implements Initializable {
+public class AsignarPuestoController implements Initializable {
 
 
     @FXML
-    private JFXButton bttGuardar;
-    @FXML
-    private JFXButton bttCerrar;
-    @FXML
-    private JFXTextField txtNumero;
+    private JFXComboBox comboPuesto;
     @FXML
     private JFXComboBox comboMedico;
+    @FXML
+    private JFXButton bttAsignar;
+    @FXML
+    private JFXButton bttCerrar;
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        for(Puesto puesto:Data.getInstance().getPuestos()){
+            if(puesto.getMedicoEncargado()==null){
+                comboPuesto.getItems().add(puesto);
+            }
+        }
         for(Medico medico:Data.getInstance().getMedicos()){
             if(!medico.isOcupado()) comboMedico.getItems().add(medico);
         }
     }    
     
     @FXML
-    private void guardarPuesto(ActionEvent event) throws IOException {
-        String numero=txtNumero.getText();
+    private void asignarMedico(ActionEvent event) throws IOException {
+        Puesto puesto=(Puesto)comboPuesto.getValue();
         Medico medico=(Medico)comboMedico.getValue();
-        if (numero.trim().length()>0){
-            Puesto puesto=new Puesto(numero);
-            if(medico!=null){ 
-                medico.setOcupado(true);
-                puesto.setMedicoEncargado(medico);
-                Data.getInstance().getPuestosAtendiendo().offer(puesto);
-            }
-            ManejoArchivo.registrarPuesto(puesto);
-            Data.getInstance().getPuestos().add(puesto);
+        if(puesto!=null && medico!=null){
+            medico.setOcupado(true);
+            puesto.setMedicoEncargado(medico);
+            Data.getInstance().getPuestosAtendiendo().offer(puesto);
             App.setRoot("quaternary");
-            App.setTamano(290, 350);
+            App.setTamano(290, 375);
         }else{
             //Muestra alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setHeaderText("Creacion de puesto");
-            alert.setContentText("Campo Numero es obligatorio");
+            alert.setHeaderText("Asignacion de medico");
+            alert.setContentText("Campo Medico/Puesto es obligatorio");
             alert.showAndWait();
         }
-        
-    };
+    }
 
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
-        App.setRoot("quaternary");
-        App.setTamano(290, 350);
-    };
-    
+         App.setRoot("quaternary");
+         App.setTamano(290, 350);
+    }
 
 }

@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.QuaternaryController">
+<VBox alignment="CENTER" prefHeight="350.0" prefWidth="290.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.QuaternaryController">
    <children>
-      <Label text="ADMINISTRACION PUESTO">
+      <Label style="-fx-background-color: #68B684;" text="ADMINISTRACION PUESTO">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Label>
-      <Button fx:id="bttCrear" mnemonicParsing="false" onAction="#crearPuesto" prefHeight="25.0" prefWidth="63.0" text="Crear" />
-      <Button fx:id="bttEliminar" mnemonicParsing="false" onAction="#eliminarPuesto" prefHeight="25.0" prefWidth="67.0" text="Eliminar" />
-      <Button fx:id="bttCerrar" mnemonicParsing="false" onAction="#cerrar" prefHeight="25.0" prefWidth="69.0" text="Cerrar" />
+      <JFXButton fx:id="bttCrear" buttonType="RAISED" onAction="#crearPuesto" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #297373;" text="Crear" textFill="WHITE" />
+      <JFXButton fx:id="bttEliminar" buttonType="RAISED" onAction="#eliminarPuesto" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #297373;" text="Eliminar" textFill="WHITE" />
+      <JFXButton fx:id="bttAsignar" buttonType="RAISED" onAction="#asignarPuesto" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #297373;" text="Asignar" textFill="WHITE" />
+      <JFXButton fx:id="bttCerrar" buttonType="RAISED" onAction="#cerrar" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #297373;" text="Cerrar" textFill="WHITE" />
    </children>
    <opaqueInsets>
       <Insets />

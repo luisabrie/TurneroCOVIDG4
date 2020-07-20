@@ -6,6 +6,7 @@
 package ec.edu.espol.turnerocovid19g4.modelo;
 
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
+import java.util.Objects;
 
 /**
  *
@@ -15,9 +16,15 @@ public class Puesto {
     private Medico medicoEncargado;
     private Cita cita;
     private final String codPuesto;
+    private String nombre;
     
     public Puesto(String codPuesto){
         this.codPuesto = codPuesto;
+    }
+    
+    public Puesto(String codPuesto, String nombre){
+        this.codPuesto = codPuesto;
+        this.nombre = nombre;
     }
 
     public void setMedicoEncargado(Medico medicoEncargado) {
@@ -36,13 +43,43 @@ public class Puesto {
         return codPuesto;
     }
 
+    public Cita getCita() {
+        return cita;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Puesto other = (Puesto) obj;
+        if (!Objects.equals(this.codPuesto, other.codPuesto)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
     @Override
     public String toString() {
         return codPuesto;
-    }
-
-    public Cita getCita() {
-        return cita;
     }
     
 }

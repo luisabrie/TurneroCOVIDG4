@@ -300,7 +300,7 @@ public class PatientsManagementController implements Initializable {
         protected Map<Puesto,PuestoBotonController> call() throws Exception {
             Map<Puesto,PuestoBotonController> mapa = new HashMap<>();
             try {
-                for (Puesto puesto : Data.getInstance().getPuest()) {
+                for (Puesto puesto : Data.getInstance().getPuestos()) {
                     PuestoBotonController puestoC = new PuestoBotonController();
                     mapa.put(puesto, puestoC);
                     

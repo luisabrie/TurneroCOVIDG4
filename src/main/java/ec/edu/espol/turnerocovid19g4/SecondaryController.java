@@ -1,5 +1,9 @@
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
@@ -25,25 +29,25 @@ public class SecondaryController implements Initializable{
 
     
     @FXML
-    private TextField nombreTexto;
+    private JFXTextField nombreTexto;
     
     @FXML
-    private TextField apellidosTexto;
+    private JFXTextField apellidosTexto;
     
     @FXML
-    private TextField cedulaTexto;
+    private JFXTextField cedulaTexto;
     
     @FXML
-    private DatePicker fechaNac ;
+    private DatePicker fechaNac;
     
     @FXML
-    private ComboBox comboGenero ;
+    private JFXComboBox comboGenero;
     
     @FXML
-    private ComboBox comboSintoma;
+    private JFXComboBox comboSintoma;
     
     @FXML
-    private Button bttGuardar;
+    private JFXButton bttGuardar;
     
     @FXML
     private void guardar() throws IOException{
@@ -56,11 +60,11 @@ public class SecondaryController implements Initializable{
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && sintoma!=null && genero!=null && fecha!=null){
             Paciente persona = new Paciente(cedula,nombre,apellidos,fecha,genero);
-            //Repeticion de sintoma en paciente y en cita
             Data.getInstance().nuevaCita(new Cita(persona,sintoma));
             //Se podria agregar un estado de cita para guardarlo en txt y cargarlo al cerrar sistema
             ManejoArchivo.registrarPaciente(persona);
             App.setRoot("primarySecond");
+            App.setTamano(290, 375);
         }else{
             //Muestra alerta
             Alert alert = new Alert(AlertType.ERROR);
@@ -74,6 +78,7 @@ public class SecondaryController implements Initializable{
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("primarySecond");
+        App.setTamano(290, 375);
     };
 
     @Override

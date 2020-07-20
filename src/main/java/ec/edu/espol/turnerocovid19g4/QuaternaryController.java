@@ -30,6 +30,8 @@ public class QuaternaryController implements Initializable {
     @FXML
     private Button bttEliminar;
     @FXML
+    private Button bttAsignar;
+    @FXML
     private Button bttCerrar;
     /**
      * Initializes the controller class.
@@ -42,16 +44,25 @@ public class QuaternaryController implements Initializable {
     @FXML
     private void crearPuesto(ActionEvent event) throws IOException {
         App.setRoot("crearPuesto");
+        App.setTamano(325, 300);
     }
 
     @FXML
     private void eliminarPuesto(ActionEvent event) throws IOException {
         App.setRoot("eliminarPuesto");
+        App.setTamano(490, 300);
+    }
+    
+    @FXML
+    private void asignarPuesto(ActionEvent event) throws IOException {
+        App.setRoot("asignarPuesto");
+        App.setTamano(450, 400);
     }
 
     @FXML
     private void cerrar(ActionEvent event) throws IOException {
         App.setRoot("primarySecond");
+        App.setTamano(290, 375);
     }
 
 }

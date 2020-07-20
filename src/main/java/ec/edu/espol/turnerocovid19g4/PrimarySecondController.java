@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,13 +26,13 @@ public class PrimarySecondController implements Initializable {
 
 
     @FXML
-    private Button fPaciente;
+    private JFXButton fPaciente;
     @FXML
-    private Button fDoctor;
+    private JFXButton fDoctor;
     @FXML
-    private Button fPuesto;
+    private JFXButton fPuesto;
     @FXML
-    private Button fAtencion;
+    private JFXButton fAtencion;
     /**
      * Initializes the controller class.
      */
@@ -43,16 +44,19 @@ public class PrimarySecondController implements Initializable {
     @FXML
     private void formPaciente() throws IOException {
         App.setRoot("secondary");
+        App.setTamano(330, 490);
     }
 
     @FXML
     private void formDoctor() throws IOException {
         App.setRoot("tertiary");
+        App.setTamano(330, 280);
     }
 
     @FXML
     private void adminPuesto() throws IOException {
         App.setRoot("quaternary");
+        App.setTamano(290, 350);
     }
 
     @FXML

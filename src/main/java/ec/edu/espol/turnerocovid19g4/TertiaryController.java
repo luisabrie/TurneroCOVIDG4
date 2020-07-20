@@ -5,6 +5,10 @@
  */
 package ec.edu.espol.turnerocovid19g4;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import ec.edu.espol.turnerocovid19g4.datos.Data;
+import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -25,19 +29,19 @@ import javafx.scene.control.TextField;
 public class TertiaryController {
     
     @FXML
-    private TextField nombreTexto;
+    private JFXTextField nombreTexto;
     
     @FXML
-    private TextField apellidosTexto;
+    private JFXTextField apellidosTexto;
     
     @FXML
-    private TextField cedulaTexto;
+    private JFXTextField cedulaTexto;
     
     @FXML
-    private TextField especialidadTexto;
+    private JFXTextField especialidadTexto;
     
     @FXML
-    private Button bttGuardar;
+    private JFXButton bttGuardar;
     
     @FXML
     private void guardar() throws IOException{
@@ -48,8 +52,10 @@ public class TertiaryController {
         if (cedula.trim().length()>0 && nombre.trim().length()>0 && apellidos.trim().length()>0 
                 && especialidad.trim().length()>0){
             Medico persona = new Medico(nombre,apellidos,cedula,especialidad);
-            registrarMedico(persona);
+            Data.getInstance().getMedicos().add(persona);
+            ManejoArchivo.registrarMedico(persona);
             App.setRoot("primarySecond");
+            App.setTamano(290, 375);
         }else{
             //Muestra alerta
             Alert alert = new Alert(AlertType.ERROR);
@@ -63,15 +69,8 @@ public class TertiaryController {
     @FXML
     private void cerrar() throws IOException{
         App.setRoot("primarySecond");
+        App.setTamano(290, 375);
     };
     
-    public void registrarMedico(Medico doctor){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/medicos.txt", true))){
-            String info = doctor.getNombre()+"|"+doctor.getApellido()+"|"+doctor.getCedula()+"|"+doctor.getEspecialidad();
-            bw.append(info+"\n");
-    	}catch(IOException ex) {
-    		System.out.println(ex.getMessage());
-    	}
-    }
     
 }
