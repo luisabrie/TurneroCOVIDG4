@@ -30,4 +30,12 @@ public class Cita {
     public int getPrioridad(){
         return sintoma.getPrioridad();
     }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    
+    
+    
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="311.0" prefWidth="339.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.CrearPuestoController">
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="325.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.CrearPuestoController">
    <children>
       <Label alignment="CENTER" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #68B684;" text="CREAR PUESTO">
          <font>

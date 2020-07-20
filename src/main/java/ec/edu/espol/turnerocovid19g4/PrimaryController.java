@@ -65,12 +65,13 @@ public class PrimaryController implements Initializable {
         @Override
         public void run() { 
             while(true){
-                //System.out.println("Hilo Ejecu");
                 synchronized(l){
                     while(!Data.getInstance().getPuestosAtendiendo().isEmpty() && !Data.getInstance().getCitas().isEmpty()){
                         Puesto p = Data.getInstance().getPuestosAtendiendo().poll();
                         Cita c = Data.getInstance().getCitas().poll();
+                        c.setMedico(p.getMedicoEncargado()); 
                         p.setCita(c);
+                        //PatientsManagementController.getMapaPuesto().get(p);
                         HBox contenedor = colaTurno.poll();
                         Platform.runLater(()->{
                             Label l1 = (Label)contenedor.getChildren().get(0);

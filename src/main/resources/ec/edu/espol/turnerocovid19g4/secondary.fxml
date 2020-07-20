@@ -13,43 +13,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="488.0" prefWidth="329.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.SecondaryController">
+<VBox alignment="CENTER" prefHeight="490.0" prefWidth="330.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.SecondaryController">
   <children>
-    <Label alignment="CENTER" prefHeight="20.0" prefWidth="136.0" style="-fx-background-color: #68B684;" text="INGRESO PACIENTE" textAlignment="CENTER">
+    <Label alignment="CENTER" prefHeight="20.0" prefWidth="181.0" style="-fx-background-color: #68B684;" text="INGRESO PACIENTE" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-    <HBox prefHeight="21.0" prefWidth="289.0">
+    <HBox alignment="CENTER" prefHeight="21.0" prefWidth="289.0">
       <children>
         <Label prefWidth="84.0" text="Nombres" />
             <JFXTextField fx:id="nombreTexto" />
       </children>
     </HBox>
-    <HBox prefHeight="21.0" prefWidth="289.0">
+    <HBox alignment="CENTER" prefHeight="21.0" prefWidth="289.0">
       <children>
         <Label prefHeight="17.0" prefWidth="86.0" text="Apellidos" />
             <JFXTextField fx:id="apellidosTexto" />
       </children>
     </HBox>
-    <HBox prefHeight="21.0" prefWidth="289.0">
+    <HBox alignment="CENTER" prefHeight="21.0" prefWidth="289.0">
       <children>
         <Label prefHeight="17.0" prefWidth="86.0" text="Cedula" />
             <JFXTextField fx:id="cedulaTexto" />
       </children>
     </HBox>
-      <HBox prefHeight="24.0" prefWidth="289.0">
+      <HBox alignment="CENTER" prefHeight="24.0" prefWidth="289.0">
          <children>
             <Label prefHeight="17.0" prefWidth="87.0" text="Nacimiento" />
             <DatePicker fx:id="fechaNac" style="-fx-background-color: #B2B2B2;" />
          </children>
       </HBox>
-      <HBox prefHeight="29.0" prefWidth="289.0">
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="289.0">
          <children>
             <Label prefHeight="17.0" prefWidth="89.0" text="Genero" />
             <JFXComboBox fx:id="comboGenero" prefHeight="26.0" prefWidth="150.0" />
          </children>
       </HBox>
-      <HBox prefHeight="27.0" prefWidth="289.0">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="289.0">
          <children>
             <Label prefHeight="17.0" prefWidth="90.0" text="Sintoma" />
             <JFXComboBox fx:id="comboSintoma" prefHeight="26.0" prefWidth="150.0" />

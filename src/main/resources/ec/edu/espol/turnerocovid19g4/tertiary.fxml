@@ -11,31 +11,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="282.0" prefWidth="329.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
+<VBox alignment="CENTER" prefHeight="280.0" prefWidth="330.0" spacing="20.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.TertiaryController">
    <children>
       <Label alignment="CENTER" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #68B684;" text="INGRESO DOCTOR">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <HBox prefHeight="27.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="80.0" text="Nombre" />
             <JFXTextField fx:id="nombreTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="27.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="79.0" text="Apellidos" />
             <JFXTextField fx:id="apellidosTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="25.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="79.0" text="Cedula" />
             <JFXTextField fx:id="cedulaTexto" />
          </children>
       </HBox>
-      <HBox prefHeight="26.0" prefWidth="291.0">
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="291.0">
          <children>
             <Label prefHeight="17.0" prefWidth="80.0" text="Especialidad" />
             <JFXTextField fx:id="especialidadTexto" />
