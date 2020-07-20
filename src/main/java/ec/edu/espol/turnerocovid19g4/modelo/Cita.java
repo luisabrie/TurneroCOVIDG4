@@ -22,6 +22,7 @@ public class Cita {
     public Cita(Paciente paciente, Sintoma sintoma){
         this.paciente = paciente;
         this.sintoma = sintoma;
+        diagnostico = new LinkedList<>();
     }
     
     public Sintoma getSintoma() {
@@ -61,6 +62,11 @@ public class Cita {
 
     public void setReceta(Receta receta) {
         this.receta = receta;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "paciente=" + paciente + ", medico=" + medico + ", sintoma=" + sintoma + ", diagnostico=" + diagnostico + ", receta=" + receta + '}';
     }
     
     

@@ -141,6 +141,7 @@ public class PatientsManagementController implements Initializable {
                         }
                         cita.setReceta(recetita);
                         }
+                        System.out.println(cita);
                         inicializarTableDiagnostico();
                         inicializarTableReceta();
                     }
