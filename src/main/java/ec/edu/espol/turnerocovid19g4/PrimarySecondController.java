@@ -17,7 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
-/**
+/**å
  * FXML Controller class
  *
  * @author lfrei
@@ -57,11 +57,6 @@ public class PrimarySecondController implements Initializable {
     private void adminPuesto() throws IOException {
         App.setRoot("quaternary");
         App.setTamano(290, 350);
-    }
-
-    @FXML
-    private void atencionCliente() throws IOException {
-        App.setRoot("patientsManagement");
     }
 
 }

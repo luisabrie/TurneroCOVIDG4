@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -33,7 +32,6 @@
                      </font>
                   </Label>
                   <Label fx:id="lblGreeting" layoutX="90.0" layoutY="96.0" text="Seleccione un paciente para visualizar su informacion" textFill="#989aad" />
-                  <Button fx:id="btnEX" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="35.0" style="-fx-background-color: #989AAD; -fx-background-radius: 1em;" text="--" textFill="#cdcdcd" />
                </children>
             </Pane>
          </left>
@@ -42,12 +40,12 @@
                <top>
                   <Pane prefHeight="125.0" prefWidth="542.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblPatientsName" layoutX="45.0" layoutY="37.0" text="Nombre de Paciente">
+                        <Label fx:id="lblPatientsName" layoutX="45.0" layoutY="37.0" text="No hay puesto seleccionado">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblInfoPuesto" layoutX="45.0" layoutY="71.0" text="Puesto (x) | Doctor  (y)" textFill="#989aad" />
+                        <Label fx:id="lblInfoPuesto" layoutX="45.0" layoutY="71.0" text="Esperando seleccion de puesto" textFill="#989aad" />
                         <JFXButton fx:id="btTerminarConsulta" layoutX="344.0" layoutY="49.0" text="Terminar Consulta" />
                      </children>
                   </Pane>
@@ -57,7 +55,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="lblSintoma" layoutX="46.0" layoutY="14.0" text="Sintoma:" textFill="#022828" />
+                              <Label fx:id="lblSintoma" layoutX="46.0" layoutY="14.0" text="Sintoma: Esperando seleccion de puesto" textFill="#022828" />
                               <VBox layoutX="46.0" layoutY="66.0" prefHeight="164.0" prefWidth="445.0">
                                  <children>
                                     <Label fx:id="lblProjectCount11" text="Diagnosticos" textFill="#022828" />

@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
@@ -66,6 +67,9 @@ public class CrearPuestoController implements Initializable {
             }
             ManejoArchivo.registrarPuesto(puesto);
             Data.getInstance().getPuestos().add(puesto);
+            PuestoBotonController boton = new PuestoBotonController();
+            boton.setPuesto(puesto);
+            Data.getInstance().getMapaPuesto().put(puesto, boton);
             App.setRoot("quaternary");
             App.setTamano(290, 350);
         }else{

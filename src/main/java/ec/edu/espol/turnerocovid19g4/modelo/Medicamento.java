@@ -11,7 +11,6 @@ package ec.edu.espol.turnerocovid19g4.modelo;
  */
 public class Medicamento {
     private String nombreGenerico;
-    private String nombreComercial;
     private String ctd;
 
     public Medicamento(String nombreGenerico, String ctd) {

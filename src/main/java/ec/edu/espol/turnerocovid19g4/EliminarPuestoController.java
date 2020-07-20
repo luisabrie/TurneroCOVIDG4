@@ -33,7 +33,9 @@ public class EliminarPuestoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for(Puesto puesto:Data.getInstance().getPuestos()){
-            comboPuesto.getItems().add(puesto);
+            if (puesto.getCita() != null)
+            comboPuesto.getItems().add(puesto+" {En Cita}");
+            else comboPuesto.getItems().add(puesto);
         }
     }    
     
@@ -43,6 +45,7 @@ public class EliminarPuestoController implements Initializable {
         if(puesto!=null && puesto.getMedicoEncargado()==null){
             Data.getInstance().getPuestos().remove(puesto);
             Data.getInstance().getPuestosAtendiendo().remove(puesto); //remove en cola?
+            Data.getInstance().getMapaPuesto().remove(puesto);
             App.setRoot("quaternary");
             App.setTamano(290, 350);
         }else{

@@ -20,7 +20,6 @@
       <JFXButton fx:id="fPaciente" buttonType="RAISED" onAction="#formPaciente" style="-fx-background-color: #297373;" text="Formulario Paciente" textFill="WHITE" />
       <JFXButton fx:id="fDoctor" buttonType="RAISED" onAction="#formDoctor" style="-fx-background-color: #297373;" text="Formulario Doctor" textFill="WHITE" />
       <JFXButton fx:id="fPuesto" buttonType="RAISED" onAction="#adminPuesto" style="-fx-background-color: #297373;" text="Administrar Puesto" textFill="WHITE" />
-      <JFXButton fx:id="fAtencion" buttonType="RAISED" onAction="#atencionCliente" style="-fx-background-color: #297373;" text="Atencion Cliente" textFill="WHITE" />
    </children>
    <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />

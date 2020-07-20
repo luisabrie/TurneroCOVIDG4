@@ -59,6 +59,8 @@ public class AsignarPuestoController implements Initializable {
             medico.setOcupado(true);
             puesto.setMedicoEncargado(medico);
             Data.getInstance().getPuestosAtendiendo().offer(puesto);
+            Data.getInstance().getPuestos().get(Data.getInstance().getPuestos().indexOf(puesto));
+            Data.getInstance().getMapaPuesto().get(puesto).getPuesto().setMedicoEncargado(medico);
             App.setRoot("quaternary");
             App.setTamano(290, 375);
         }else{

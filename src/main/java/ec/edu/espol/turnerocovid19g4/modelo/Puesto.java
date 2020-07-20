@@ -5,7 +5,6 @@
  */
 package ec.edu.espol.turnerocovid19g4.modelo;
 
-import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import java.util.Objects;
 
 /**

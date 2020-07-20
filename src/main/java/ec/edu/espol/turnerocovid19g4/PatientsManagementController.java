@@ -39,7 +39,9 @@ import ec.edu.espol.turnerocovid19g4.modelo.MedicamentoAsignado;
 import ec.edu.espol.turnerocovid19g4.modelo.Receta;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
@@ -80,6 +82,7 @@ public class PatientsManagementController implements Initializable {
     private ObservableMap<Puesto,PuestoBotonController> mapaPuesto;
     
     private Puesto currentPuesto;
+    private FlowPane flowpane;
     private ObservableList<RecetaElemento> receta;
     private ObservableList<DiagnosticoElemento> diagnostico;
     @Override
@@ -91,13 +94,15 @@ public class PatientsManagementController implements Initializable {
         System.out.println("2");
         fetchPuestos.setOnSucceeded((var event) -> {
             System.out.println("3");
-            mapaPuesto = FXCollections.observableMap(fetchPuestos.getValue());
+            Data.getInstance().setMapaPuesto(FXCollections.observableMap(fetchPuestos.getValue()));
+            mapaPuesto = Data.getInstance().getMapaPuesto();
+            
             System.out.println("4");
             int n = mapaPuesto.size();
             System.out.println("5");
             lblPuestosTotal.setText("Puestos (" + n + ")");
             System.out.println("6");
-            FlowPane flowpane = new FlowPane();
+            flowpane = new FlowPane();
             flowpane.setMaxWidth(286);
             flowpane.setStyle("-fx-background-color: #474C5F");
                 for (Map.Entry<Puesto,PuestoBotonController> entry : mapaPuesto.entrySet()){
@@ -108,11 +113,13 @@ public class PatientsManagementController implements Initializable {
                     PuestoBotonController controller = entry.getValue();
                     loader.setController(controller);
                     
-                try {
-                    flowpane.getChildren().add(loader.load());
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                    try {
+                        Node object = loader.load();
+                        controller.setNode(object);
+                        flowpane.getChildren().add(object);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     controller.setPuesto(puesto);
                     controller.getLbPuestoID().setOnAction(e -> {
                             if (currentPuesto == null)
@@ -121,17 +128,65 @@ public class PatientsManagementController implements Initializable {
                                 mapaPuesto.get(currentPuesto).puestoNoSeleccionado();
                             currentPuesto = puesto;
                             Cita cita = controller.getPuesto().getCita();
-                            lblSintoma.setText(cita.getSintoma().getNombre());
-                            lblPatientsName.setText(cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido());
-                            lblInfoPuesto.setText("Puesto ("+currentPuesto.getCodPuesto()+") | Doctor  ("+currentPuesto.getMedicoEncargado().getNombre()+" "+currentPuesto.getMedicoEncargado().getApellido()+")");
+                            if (cita != null){ 
+                                lblSintoma.setText("Sintoma: "+ cita.getSintoma().getNombre());
+                                lblPatientsName.setText(cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido());
+                                lblInfoPuesto.setText("Puesto ("+currentPuesto.getCodPuesto()+") | Doctor  ("+currentPuesto.getMedicoEncargado().getNombre()+" "+currentPuesto.getMedicoEncargado().getApellido()+")");
+                                
+                            }
+                            
                             
                         });
                 }
+                mapaPuesto.addListener((MapChangeListener<Puesto, PuestoBotonController>) CHANGE -> {
+                        if (CHANGE.wasAdded()) {
+                            PuestoBotonController controller = CHANGE.getValueAdded();
+                            FXMLLoader loader = new FXMLLoader(App.class.getResource("puestoBoton.fxml"));
+                            Puesto puesto = controller.getPuesto();
+                            loader.setController(controller);
+                            
+                            try {
+                                Node object = loader.load();
+                                controller.setNode(object);
+                                flowpane.getChildren().add(object);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            lblPuestosTotal.setText("Puestos (" + mapaPuesto.size() + ")");
+                            controller.setPuesto(puesto);
+                            controller.getLbPuestoID().setOnAction(e -> {
+                            if (currentPuesto == null)
+                                controller.puestoSeleccionado();
+                            else
+                                mapaPuesto.get(currentPuesto).puestoNoSeleccionado();
+                                currentPuesto = puesto;
+                                Cita cita = controller.getPuesto().getCita();
+                                if (cita != null){ 
+                                    lblSintoma.setText("Sintoma: "+ cita.getSintoma().getNombre());
+                                    lblPatientsName.setText(cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido());
+                                    lblInfoPuesto.setText("Puesto ("+currentPuesto.getCodPuesto()+") | Doctor  ("+currentPuesto.getMedicoEncargado().getNombre()+" "+currentPuesto.getMedicoEncargado().getApellido()+")");
+                                   
+                                }            
+                        });
+                    } else if(CHANGE.wasRemoved()) {
+                        flowpane.getChildren().remove(CHANGE.getValueRemoved().getNode());
+                        lblPuestosTotal.setText("Puestos (" + mapaPuesto.size() + ")");
+                        if (CHANGE.getValueRemoved().equals(currentPuesto)){
+                            currentPuesto = null;
+                            inicializarTableDiagnostico();
+                            inicializarTableReceta();
+                            lblInfoPuesto.setText("Esperando seleccion de un puesto");
+                            lblPatientsName.setText("No hay puesto seleccionado");
+                            lblSintoma.setText("Sintoma:"+" Esperando seleccion de un puesto");
+                            
+                        }
+                        }
+                });
                 paneGridPuestos.setContent(flowpane); 
                 btTerminarConsulta.setOnAction(e ->{
                     Cita cita = currentPuesto.getCita();
                     if(cita != null){
-                        for (DiagnosticoElemento diagnostico : diagnostico){
+                        for (DiagnosticoElemento diagnostico : diagnostico){    
                         cita.getDiagnostico().add(new Diagnostico(diagnostico.codigo.getValue(),diagnostico.nombre.getValue()));
                     
                         Receta recetita = new Receta();
@@ -142,8 +197,15 @@ public class PatientsManagementController implements Initializable {
                         cita.setReceta(recetita);
                         }
                         System.out.println(cita);
+                        currentPuesto.setCita(null);
+                        mapaPuesto.get(currentPuesto).setPuesto(currentPuesto);
+                        Data.getInstance().getPuestosAtendiendo().add(currentPuesto);
                         inicializarTableDiagnostico();
                         inicializarTableReceta();
+                        lblInfoPuesto.setText("Esperando seleccion de un puesto");
+                        lblPatientsName.setText("No hay puesto seleccionado");
+                        lblSintoma.setText("Sintoma:"+" Esperando seleccion de un puesto");
+                        
                     }
                     
                 });
@@ -332,10 +394,6 @@ public class PatientsManagementController implements Initializable {
             this.nombreGenerico = new SimpleStringProperty(nombreGenerico);
             this.dosis = new SimpleStringProperty(dosis);
         }
-    }
-
-    public ObservableMap<Puesto, PuestoBotonController> getMapaPuesto() {
-        return mapaPuesto;
     }
     
 }

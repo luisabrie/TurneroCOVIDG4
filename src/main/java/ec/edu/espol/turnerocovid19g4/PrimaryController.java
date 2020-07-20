@@ -35,7 +35,7 @@ public class PrimaryController implements Initializable {
     private HBox thirdTurno;
     @FXML
     private HBox fourthTurno;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Inicializa los videos
@@ -58,6 +58,7 @@ public class PrimaryController implements Initializable {
             initVideos();
         });
         media.setMediaPlayer(mediaPlayer);
+        mediaPlayer.setVolume(0);
     }
     
     class Refrescador implements Runnable{
@@ -71,7 +72,7 @@ public class PrimaryController implements Initializable {
                         Cita c = Data.getInstance().getCitas().poll();
                         c.setMedico(p.getMedicoEncargado()); 
                         p.setCita(c);
-                        //PatientsManagementController.getMapaPuesto().get(p);
+                        Data.getInstance().getMapaPuesto().get(p).setPuesto(p);
                         HBox contenedor = colaTurno.poll();
                         Platform.runLater(()->{
                             Label l1 = (Label)contenedor.getChildren().get(0);

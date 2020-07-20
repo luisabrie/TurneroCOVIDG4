@@ -1,6 +1,5 @@
 package ec.edu.espol.turnerocovid19g4;
 
-import ec.edu.espol.turnerocovid19g4.datos.Data;
 import ec.edu.espol.turnerocovid19g4.datos.ManejoArchivo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +18,8 @@ public class App extends Application {
     private static Scene scene1;
     private static Stage stage1;
     private static Stage stage;
+    private static Stage stage2;
+    private static Scene scene2;
 
     @Override
     public void start(Stage s) throws IOException {
@@ -27,6 +28,10 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         escenario(scene1,stage1);
+        stage2=new Stage();
+        scene2 = new Scene(loadFXML("patientsManagement"), 1049, 594);
+        stage2.setScene(scene2);
+        stage2.show();
     }
     
     @Override

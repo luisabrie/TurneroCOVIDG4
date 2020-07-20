@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 
 /**
@@ -25,18 +26,28 @@ public class PuestoBotonController implements Initializable {
     
     private Puesto puesto;
     
+    private Node node; 
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
     
     public void setPuesto(Puesto puesto){
         this.puesto = puesto;
-        
-        lbPuestoID.setText(puesto.getCodPuesto());
-        Cita cita = puesto.getCita();
-        if (cita == null) {
-        }
-        else {
+        if (lbPuestoID != null){
+            lbPuestoID.setText(puesto.getCodPuesto());
+            Cita cita = puesto.getCita();
+            if (cita == null) {
+            }
+            else {
+            }
         }
     }
     

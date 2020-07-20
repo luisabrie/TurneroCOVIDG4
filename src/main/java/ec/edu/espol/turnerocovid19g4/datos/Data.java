@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.turnerocovid19g4.datos;
 
+import ec.edu.espol.turnerocovid19g4.PuestoBotonController;
 import ec.edu.espol.turnerocovid19g4.modelo.Cita;
 import ec.edu.espol.turnerocovid19g4.modelo.Medico;
 import ec.edu.espol.turnerocovid19g4.modelo.Puesto;
@@ -16,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import javafx.collections.ObservableMap;
 
 /**
  *
@@ -31,11 +33,12 @@ public class Data {
     private PriorityQueue<Cita> citas;
     private CircularSimplyLinkedList<File> videos;
     private Iterator<File> vidIt;
+    private ObservableMap<Puesto,PuestoBotonController> mapaPuesto;
     
     private Data(){
         medicos = ManejoArchivo.cargarMedicos(medicos);
         sintomas = ManejoArchivo.cargarSintomas(sintomas);
-        puestosAtendiendo=new LinkedList<>(); //Inicializar vacia o solo puestos con medicos?
+        puestosAtendiendo=new LinkedList<>(); 
         puestos =  ManejoArchivo.cargarPuestos(puestos,puestosAtendiendo);        
         videos =  ManejoArchivo.cargarVideos(videos);
         vidIt = videos.iterator();
@@ -48,6 +51,14 @@ public class Data {
                 puesto.setMedicoEncargado(m);
             }
         }
+    }
+
+    public ObservableMap<Puesto, PuestoBotonController> getMapaPuesto() {
+        return mapaPuesto;
+    }
+
+    public void setMapaPuesto(ObservableMap<Puesto, PuestoBotonController> mapaPuesto) {
+        this.mapaPuesto = mapaPuesto;
     }
     
     public static Data getInstance(){
