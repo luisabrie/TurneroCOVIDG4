@@ -57,7 +57,7 @@ public class PrimarySecondController implements Initializable {
 
     @FXML
     private void atencionCliente() throws IOException {
-        App.setRoot("fifth");
+        App.setRoot("patientsManagement");
     }
 
 }

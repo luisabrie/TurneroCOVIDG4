@@ -9,14 +9,13 @@ package ec.edu.espol.turnerocovid19g4.modelo;
  *
  * @author mbpretina
  */
-class Medicamento {
+public class Medicamento {
     private String nombreGenerico;
     private String nombreComercial;
     private String ctd;
 
-    public Medicamento(String nombreGenerico, String nombreComercial, String ctd) {
+    public Medicamento(String nombreGenerico, String ctd) {
         this.nombreGenerico = nombreGenerico;
-        this.nombreComercial = nombreComercial;
         this.ctd = ctd;
     }
 
@@ -26,14 +25,6 @@ class Medicamento {
 
     public void setNombreGenerico(String nombreGenerico) {
         this.nombreGenerico = nombreGenerico;
-    }
-
-    public String getNombreComercial() {
-        return nombreComercial;
-    }
-
-    public void setNombreComercial(String nombreComercial) {
-        this.nombreComercial = nombreComercial;
     }
 
     public String getCtd() {

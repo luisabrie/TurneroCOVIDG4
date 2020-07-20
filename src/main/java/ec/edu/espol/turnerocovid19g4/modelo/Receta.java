@@ -11,8 +11,20 @@ import java.util.LinkedList;
  *
  * @author mbpretina
  */
-class Receta {
+public class Receta {
     private LinkedList<MedicamentoAsignado> medicamentoAsignado;
+
+    public Receta() {
+        this.medicamentoAsignado = new LinkedList<>();
+    }
+
+    public LinkedList<MedicamentoAsignado> getMedicamentoAsignado() {
+        return medicamentoAsignado;
+    }
+
+    public void setMedicamentoAsignado(LinkedList<MedicamentoAsignado> medicamentoAsignado) {
+        this.medicamentoAsignado = medicamentoAsignado;
+    }
     
     
 }

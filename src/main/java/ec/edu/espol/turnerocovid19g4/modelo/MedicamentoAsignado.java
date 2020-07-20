@@ -9,7 +9,7 @@ package ec.edu.espol.turnerocovid19g4.modelo;
  *
  * @author mbpretina
  */
-class MedicamentoAsignado {
+public class MedicamentoAsignado {
     private Medicamento medicamento;
     private String dosis;
 

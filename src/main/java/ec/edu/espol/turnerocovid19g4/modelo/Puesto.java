@@ -40,7 +40,9 @@ public class Puesto {
     public String toString() {
         return codPuesto;
     }
-    
-    
+
+    public Cita getCita() {
+        return cita;
+    }
     
 }

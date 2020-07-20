@@ -30,4 +30,38 @@ public class Cita {
     public int getPrioridad(){
         return sintoma.getPrioridad();
     }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    } 
+
+    public LinkedList<Diagnostico> getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(LinkedList<Diagnostico> diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public Receta getReceta() {
+        return receta;
+    }
+
+    public void setReceta(Receta receta) {
+        this.receta = receta;
+    }
+    
+    
 }

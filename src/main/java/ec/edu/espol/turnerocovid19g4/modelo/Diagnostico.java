@@ -5,13 +5,15 @@
  */
 package ec.edu.espol.turnerocovid19g4.modelo;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 /**
  *
  * @author mbpretina
  */
-class Diagnostico {
-    private String codigo;
-    private String nombre;
+public class Diagnostico extends RecursiveTreeObject<Diagnostico> {
+    public String codigo;
+    public String nombre;
 
     public Diagnostico(String codigo, String nombre) {
         this.codigo = codigo;
