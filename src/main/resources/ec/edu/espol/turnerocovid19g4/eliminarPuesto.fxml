@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="312.0" prefWidth="497.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.EliminarPuestoController">
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="490.0" spacing="40.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.turnerocovid19g4.EliminarPuestoController">
    <children>
       <Label alignment="CENTER" prefHeight="20.0" prefWidth="210.0" style="-fx-background-color: #68B684;" text="ELIMINAR PUESTO">
          <font>
